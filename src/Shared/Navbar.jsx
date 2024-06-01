@@ -7,17 +7,53 @@ import {
     Menu,
     MenuHandler,
     MenuList,
-    MenuItem,
+    MenuItem
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { MdOutlinePlaylistRemove } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 const Nav = () => {
     const [openNav, setOpenNav] = useState(false);
-    const { user, loading } = useAuth()
+    const { user, Logout } = useAuth()
+    const handleLogout = () => {
+        Swal.fire({
+            title: "Log out now?",
+            text: " Are you sure you want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Logout"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Logout();
 
+                // sweetAlert
+                Swal.fire({
+                    title: "Successfully Logout",
+                    text: "You are now logged out. Stay healthy!",
+                    icon: "success",
+                    showClass: {
+                        popup: `
+                        animate__animated
+                        animate__fadeInUp
+                        animate__faster
+                      `
+                    },
+                    hideClass: {
+                        popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                      `
+                    }
+                });
+            }
+        })
+    }
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
             <li>
@@ -35,18 +71,24 @@ const Nav = () => {
                     <Menu>
                         <MenuHandler>
                             <Avatar
-                                src={user?.imageURL}
+                                src={user?.photoURL}
                                 alt={user?.displayName}
                                 withBorder={true}
                                 color="green"
-                                className="p-0.5 cursor-pointer"
+                                className="p-1 cursor-pointer w-14 h-14"
                             />
                         </MenuHandler>
-                        <MenuList>
+                        <MenuList className="space-y-4">
+
+                            <p className="px-3 my-2">{user?.displayName}</p>
+
                             <MenuItem>
-                                <Link to='/' className="flex items-center ">
+                                <Link to='/dashboard' className="flex items-center ">
                                     Dashboard
                                 </Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleLogout} className="border text-red-600 border-red-600">
+                                Logout
                             </MenuItem>
                         </MenuList>
                     </Menu>

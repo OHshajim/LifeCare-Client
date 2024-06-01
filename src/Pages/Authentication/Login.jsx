@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
+import Social from "./Social";
+import useFrom from "../../Hooks/useFrom";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { Login } = useAuth()
+    const location = useLocation()
+    const navigate = useFrom(location)
     const {
         register,
         handleSubmit,
@@ -16,6 +21,12 @@ const Login = () => {
         Login(email, password)
             .then(res => {
                 console.log(res);
+                Swal.fire({
+                    title: 'Successfully Login',
+                    text: `Welcome back, Ready to explore!!!`,
+                    icon: "success"
+                });
+                navigate()
             })
             .catch(error => {
                 console.log(error);
@@ -105,7 +116,7 @@ const Login = () => {
                     </div>
                     <div className="flex flex-col  items-center mt-3">
                         <p className="text-sm font-medium">Or Sign in With </p>
-                        {/* <SocialLogin /> */}
+                        <Social />
                     </div>
                 </div>
             </div>

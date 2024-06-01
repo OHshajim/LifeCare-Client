@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import CampDetails from "../Pages/Home/HomePage_Sections/CampDetails";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
+import PrivetRoute from "./PrivetRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -16,15 +17,15 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/camp/:id',
-                element: <CampDetails/>
+                element: <PrivetRoute><CampDetails /></PrivetRoute>
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: '/register',
-                element: <Register/>
+                element: <Register />
             },
         ]
     },

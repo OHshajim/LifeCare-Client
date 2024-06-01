@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useFrom from "../../Hooks/useFrom";
+import Swal from "sweetalert2";
 // import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
     const { CreateUser, updateUser } = useAuth()
-    // const location = useLocation()
-    // const navigate = useNavigate()
-    // const from = location.state?.from?.pathname || '/'
+    const location = useLocation()
+    const navigate = useFrom(location)
     // const axiosPublic = useAxiosPublic()
     const {
         register,
@@ -21,8 +22,13 @@ const Register = () => {
             .then(async (res) => {
                 console.log(res.user);
                 await updateUser(name, photoURL)
-                    .then(res => {
-                        console.log(res);
+                    .then(() => {
+                        navigate();
+                        Swal.fire({
+                            title: 'Successfully Registered',
+                            text: `Congratulations, ${name}! You have successfully registered.`,
+                            icon: "success"
+                        });
                     })
             })
             .catch((error) => {
