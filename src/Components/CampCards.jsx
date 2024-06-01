@@ -45,7 +45,7 @@ const CampCards = ({ camp }) => {
                     </div>
                 </CardBody>
                 <CardFooter className="pt-0">
-                    <Link to={`/camp/:${_id}`}><Button>View Details</Button></Link>
+                    <Link to={`/camp/${_id}`}><Button>View Details</Button></Link>
                 </CardFooter>
             </Card>
         </div>
