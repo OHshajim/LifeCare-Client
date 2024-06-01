@@ -1,0 +1,62 @@
+ [
+        {
+            "Camp_Name": "Springfield General Health Camp",
+            "Image": "https://i.ibb.co/MSnyCj7/group-people-volunteering-foodbank-poor-people.jpg",
+            "Camp_Fees": 10,
+            "Date_Time": "2024-06-20",
+            "Location": "Springfield, IL",
+            "Healthcare_Professional_Name": "Dr. John Doe",
+            "Participant_Count": 25,
+            "Description": "Offering free general health check-ups, blood pressure screenings, and dental care to the community."
+        },
+        {
+            "Camp_Name": "Greenfield Pediatric Care Camp",
+            "Image": "https://i.ibb.co/Kw3wKFF/side-view-doctor-examining-child.jpg",
+            "Camp_Fees": 20,
+            "Date_Time": "2024-07-15",
+            "Location": "Greenfield, WI",
+            "Healthcare_Professional_Name": "Dr. Emily Clark",
+            "Participant_Count": 40,
+            "Description": "Specializing in pediatric care, including vaccinations and developmental screenings for children."
+        },
+        {
+            "Camp_Name": "Madison Eye Care Camp",
+            "Image": "https://i.ibb.co/YL7k6H8/woman-eyes-consult.jpg",
+            "Camp_Fees": 15,
+            "Date_Time": "2024-08-05",
+            "Location": "Madison, WI",
+            "Healthcare_Professional_Name": "Dr. Sarah Lee",
+            "Participant_Count": 30,
+            "Description": "Providing comprehensive eye exams, free prescription glasses, and eye health education."
+        },
+        {
+            "Camp_Name": "Chicago Senior Health Camp",
+            "Image": "https://i.ibb.co/nkDyfND/nurse-measure-pulse-old-man-clinic-garden-near-nursing-home.jpg",
+            "Camp_Fees": 10,
+            "Date_Time": "2024-09-01",
+            "Location": "Chicago, IL",
+            "Healthcare_Professional_Name": "Dr. Michael Smith",
+            "Participant_Count": 50,
+            "Description": "Targeting senior citizens for specialized health services, including chronic disease management and wellness checks."
+        },
+        {
+            "Camp_Name": "Bloomington Women Health Camp",
+            "Image": "https://i.ibb.co/1Q6DdVF/side-view-smiley-doctor-talking-patient.jpg",
+            "Camp_Fees": 25,
+            "Date_Time": "2024-10-12",
+            "Location": "Bloomington, IN",
+            "Healthcare_Professional_Name": "Dr. Laura Martin",
+            "Participant_Count": 35,
+            "Description": "Focused on women's health, providing gynecological exams, breast cancer screenings, and reproductive health education."
+        },
+        {
+            "Camp_Name": "Detroit Mental Health Camp",
+            "Image": "https://i.ibb.co/R6wbwZM/mental-health-care-sketch-diagram.jpg",
+            "Camp_Fees": 20,
+            "Date_Time": "2024-11-05",
+            "Location": "Detroit, MI",
+            "Healthcare_Professional_Name": "Dr. Richard Harris",
+            "Participant_Count": 45,
+            "Description": "Offering mental health assessments, counseling services, and stress management workshops."
+        }
+    ]
