@@ -1,7 +1,8 @@
 import {
-    MobileNav,
+    // MobileNav,
     Typography,
     IconButton,
+    Collapse,
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
@@ -72,9 +73,9 @@ const Nav = () => {
                             </IconButton>
                         </div>
                     </div>
-                    <MobileNav open={openNav} className='block lg:hidden'>
+                    <Collapse  open={openNav} className='block lg:hidden'>
                         {navList}
-                    </MobileNav>
+                    </Collapse >
                 </div>
 
             </div>
