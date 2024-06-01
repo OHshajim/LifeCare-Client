@@ -12,7 +12,7 @@ const Nav = () => {
 
 
     const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-lg sm:text-xl">
+        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
             <li>
                 <Link to='/' className="flex items-center ">
                     Home
@@ -45,12 +45,12 @@ const Nav = () => {
     return (
         <div className="w-screen">
             <div
-                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur backdrop-brightness-10" : " w-screen  duration-300 fixed z-10 "}>
+                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#00000027]" : " w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
 
                 <div className="w-screen text-white  px-4 py-2 lg:px-8 lg:py-4 bg-transparent border-none ">
                     <div className="flex items-center justify-between ">
-                        <Typography variant="h3"
-                            className="mr-4  py-1.5 font-bold"
+                        <Typography variant="h4"
+                            className="mr-4   font-bold"
                         >
                             LifeCare
                         </Typography>
