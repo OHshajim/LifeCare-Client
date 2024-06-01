@@ -8,9 +8,10 @@ import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { MdOutlinePlaylistRemove } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 const Nav = () => {
     const [openNav, setOpenNav] = useState(false);
-
+    const { user, loading } = useAuth()
 
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
@@ -24,11 +25,20 @@ const Nav = () => {
                     Dashboard
                 </Link>
             </li>
-            <li>
-                <Link to='/' className="flex items-center ">
-                    Join Us
-                </Link>
-            </li>
+            {
+                user ? <>
+
+
+                </>
+                    :
+                    <>
+                        <li>
+                            <Link to='/' className="flex items-center ">
+                                Join Us
+                            </Link>
+                        </li>
+                    </>
+            }
         </ul>
     );
 
@@ -73,7 +83,7 @@ const Nav = () => {
                             </IconButton>
                         </div>
                     </div>
-                    <Collapse  open={openNav} className='block lg:hidden'>
+                    <Collapse open={openNav} className='block lg:hidden'>
                         {navList}
                     </Collapse >
                 </div>
