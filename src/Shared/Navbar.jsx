@@ -3,6 +3,11 @@ import {
     Typography,
     IconButton,
     Collapse,
+    Avatar,
+    Menu,
+    MenuHandler,
+    MenuList,
+    MenuItem,
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
@@ -27,13 +32,31 @@ const Nav = () => {
             </li>
             {
                 user ? <>
+                    <Menu>
+                        <MenuHandler>
+                            <Avatar
+                                src={user?.imageURL}
+                                alt={user?.displayName}
+                                withBorder={true}
+                                color="green"
+                                className="p-0.5 cursor-pointer"
+                            />
+                        </MenuHandler>
+                        <MenuList>
+                            <MenuItem>
+                                <Link to='/' className="flex items-center ">
+                                    Dashboard
+                                </Link>
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
 
 
                 </>
                     :
                     <>
                         <li>
-                            <Link to='/' className="flex items-center ">
+                            <Link to='/login' className="flex items-center ">
                                 Join Us
                             </Link>
                         </li>
