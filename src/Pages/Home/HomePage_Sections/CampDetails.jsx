@@ -5,12 +5,14 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { MdAddLocation } from "react-icons/md";
-import { Button, Spinner } from "@material-tailwind/react";
+import { Button, Card, CardBody, CardFooter, Dialog, Input, Option, Select, Spinner, Typography } from "@material-tailwind/react";
+import React from "react";
+
 
 const CampDetails = () => {
     const axiosPublic = useAxiosPublic()
     const { id } = useParams()
-    const { data: campDetails = {}, isPending:loading } = useQuery({
+    const { data: campDetails = {}, isPending: loading } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/camp/${id}`);
@@ -20,6 +22,12 @@ const CampDetails = () => {
     console.log(campDetails);
     const { Camp_Fees, Camp_Name, Date_Time, Description, Healthcare_Professional_Name, Image, Location, Participant_Count
     } = campDetails;
+
+
+    // for modal 
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen((cur) => !cur);
+
     return (
         <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10 py-20">
             {/* loader */}
@@ -57,8 +65,114 @@ const CampDetails = () => {
                         </div>
                     </div>
                     <div className="mt-5 flex justify-end ">
-                        <Button >Join Camp</Button>
+                        <Button onClick={handleOpen}>Join Camp</Button>
                     </div>
+                    {/* modal */}
+                    <Dialog
+                        size="xl"
+                        open={open}
+                        handler={handleOpen}
+                        className="bg-transparent shadow-none"
+                    >
+                        <Card className="mx-auto w-full max-w-[50rem]">
+                            <CardBody className="flex flex-col gap-4">
+                                <Typography variant="h4" color="blue-gray">
+                                    Registration For Campaign
+                                </Typography>
+                                <Typography
+                                    className="mb-3 font-normal"
+                                    variant="paragraph"
+                                    color="gray"
+                                >
+                                    Enter your email and password to Sign In.
+                                </Typography>
+                                <form className="space-y-3 md:space-y-5">
+                                    <div className="flex items-center flex-col md:flex-row gap-5">
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Camp Name
+                                            </Typography>
+                                            <Input className="w-full" value={Camp_Name} />
+                                        </div>
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Camp Fees
+                                            </Typography>
+                                            <Input className="w-full" value={Camp_Fees} />
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center flex-col md:flex-row gap-5">
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Healthcare Professional Name
+                                            </Typography>
+                                            <Input className="w-full" value={Healthcare_Professional_Name} />
+                                        </div>
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Location
+                                            </Typography>
+                                            <Input className="w-full" value={Location} />
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center flex-col md:flex-row gap-5">
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Participant Name
+                                            </Typography>
+                                            <Input className="w-full" value={Healthcare_Professional_Name} />
+                                        </div>
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Participant Email
+                                            </Typography>
+                                            <Input className="w-full" value={Location} />
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center flex-col md:flex-row gap-5">
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Age
+                                            </Typography>
+                                            <Input type="number" min={1} max={150} className="w-full" label="Enter Your Age" />
+                                        </div>
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Gender
+                                            </Typography>
+                                            <Select label="Select Your Gender">
+                                                <Option>Male</Option>
+                                                <Option>Female</Option>
+                                                <Option>Custom</Option>
+                                            </Select>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center flex-col md:flex-row gap-5">
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Phone Number
+                                            </Typography>
+                                            <Input type="number" maxLength={12} className="w-full" label="Enter Your Number" />
+                                        </div>
+                                        <div className="md:w-1/2 w-full">
+                                            <Typography className="mb-2" variant="h6">
+                                                Emergency Contact
+                                            </Typography>
+                                            <Input type="number"  maxLength={12} className="w-full" label="Enter Emergency Contact" />
+                                        </div>
+
+                                    </div>
+
+
+                                </form>
+                            </CardBody>
+                            <CardFooter className="pt-0">
+                                <Button variant="gradient" onClick={handleOpen} fullWidth>
+                                    Registration
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    </Dialog>
                 </div>
 
 
