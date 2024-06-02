@@ -11,12 +11,14 @@ import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 
 import Select from 'react-select'
+import Swal from "sweetalert2";
 
 const CampDetails = () => {
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
     const { id } = useParams()
     const [gender, setGender] = useState('')
+    const [error, setError] = useState(false)
     const { data: campDetails = {}, isPending: loading } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
@@ -24,7 +26,7 @@ const CampDetails = () => {
             return res.data;
         }
     })
-    const { Camp_Fees, Camp_Name, Date_Time, Description, Healthcare_Professional_Name, Image, Location, Participant_Count
+    const { _id, Camp_Fees, Camp_Name, Date_Time, Description, Healthcare_Professional_Name, Image, Location, Participant_Count
     } = campDetails;
 
     // form
@@ -35,16 +37,40 @@ const CampDetails = () => {
     ]
     const handleSelect = (element) => {
         setGender(element.value)
+        setError(false)
     }
     const {
         register,
         handleSubmit,
-        // formState: { errors },
+        reset,
+        formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
-        const registrationData = { ...data, gender: gender }
+    const onSubmit = async (data) => {
+        if (!gender) {
+            return setError(true);
+        }
+        else {
+            setError(false)
+        }
+        const registrationData = { ...data, gender: gender, campId: _id }
         console.log(registrationData);
+
+        await axiosPublic.post('/registeredCamp', registrationData)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: 'Successfully Registered',
+                        text: 'Congratulation, Welcome to the camp',
+                        icon: "success"
+                    });
+                    reset()
+                    handleOpen()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 
@@ -120,15 +146,15 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Camp Name
                                     </Typography>
-                                    <Input className="w-full fixedInfo " value={Camp_Name} 
-                                        {...register("Camp_Name", { required: true })} />
+                                    <Input className="w-full fixedInfo " value={Camp_Name}
+                                        {...register("Camp_Name")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Camp Fees
                                     </Typography>
                                     <Input className="w-full fixedInfo" value={Camp_Fees}
-                                        {...register("Camp_Fees", { required: true })} />
+                                        {...register("Camp_Fees")} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -137,14 +163,14 @@ const CampDetails = () => {
                                         Healthcare Professional Name
                                     </Typography>
                                     <Input className="w-full fixedInfo" value={Healthcare_Professional_Name}
-                                        {...register("Healthcare_Professional_Name", { required: true })} />
+                                        {...register("Healthcare_Professional_Name")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Location
                                     </Typography>
                                     <Input className="w-full fixedInfo" value={Location}
-                                        {...register("Location", { required: true })} />
+                                        {...register("Location")} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -152,39 +178,42 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Participant Name
                                     </Typography>
-                                    <Input {...register("ParticipantName", { required: true })}
+                                    <Input {...register("ParticipantName")}
                                         className="w-full fixedInfo" value={user?.displayName} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Participant Email
                                     </Typography>
-                                    <Input {...register("ParticipantEmail", { required: true })}
+                                    <Input {...register("ParticipantEmail")}
                                         className="w-full fixedInfo" value={user?.email} />
                                 </div>
                             </div>
-                            <div className="flex items-center flex-col md:flex-row gap-5">
+                            <div className="flex  flex-col md:flex-row gap-5">
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Age
                                     </Typography>
-                                    <Input {...register("Age", { required: true })} required
+                                    <Input {...register("Age", { required: true })}
                                         type="number" min={1} max={150} className="w-full" label="Enter Your Age" />
+                                    {errors.Age && <span className="text-red-600 font-semibold">Age is required***</span>}
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Gender
                                     </Typography>
-                                    <Select options={options} onChange={handleSelect} required className="select" />
+                                    <Select options={options} onChange={handleSelect} className="select" />
+                                    {error && <span className="text-red-600 font-semibold">Age is required***</span>}
                                 </div>
                             </div>
-                            <div className="flex items-center flex-col md:flex-row gap-5">
+                            <div className="flex  flex-col md:flex-row gap-5">
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Phone Number
                                     </Typography>
-                                    <Input {...register("PhoneNumber", { required: true })} 
+                                    <Input {...register("PhoneNumber", { required: true })}
                                         type="number" maxLength={12} className="w-full " label="Enter Your Number" />
+                                    {errors.PhoneNumber && <span className="text-red-600 font-semibold">Phone Number is required***</span>}
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
@@ -192,11 +221,12 @@ const CampDetails = () => {
                                     </Typography>
                                     <Input {...register("EmergencyContact", { required: true })}
                                         type="number" maxLength={12} className="w-full" label="Enter Emergency Contact" />
+                                    {errors.EmergencyContact && <span className="text-red-600 font-semibold">Emergency Contact is required***</span>}
                                 </div>
 
                             </div>
 
-                            <Input type="submit" variant="outlined" value='Registration'className="fixedInfo" />
+                            <Input type="submit" variant="outlined" value='Registration' className="fixedInfo" />
                         </form>
                     </CardBody>
 

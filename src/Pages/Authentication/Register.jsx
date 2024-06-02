@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import useFrom from "../../Hooks/useFrom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Social from "./Social";
 
 const Register = () => {
     const { CreateUser, updateUser } = useAuth()
@@ -85,7 +86,7 @@ const Register = () => {
                                     placeholder="Enter Your Name "
                                     {...register("name", { required: true })}
                                 />
-                                {errors.name && <span className="text-red-600 font-semibold">name is required</span>}
+                                {errors.name && <span className="text-red-600 font-semibold">name is required***</span>}
                             </div>
 
                             <div className="mt-7">
@@ -96,7 +97,7 @@ const Register = () => {
                                     placeholder="Enter PhotoURL "
                                     {...register("photoURL", { required: true })}
                                 />
-                                {errors.name && <span className="text-red-600 font-semibold">PhotoURL is required</span>}
+                                {errors.name && <span className="text-red-600 font-semibold">PhotoURL is required***</span>}
                             </div>
 
                             <div className="mt-4 ">
@@ -106,7 +107,7 @@ const Register = () => {
                                     placeholder="Enter Your Email"
                                     {...register("email", { required: true })}
                                 />
-                                {errors.email && <span className="text-red-600 font-semibold">email is required</span>}
+                                {errors.email && <span className="text-red-600 font-semibold">email is required***</span>}
                             </div>
 
                             <div className="mt-4">
@@ -118,9 +119,9 @@ const Register = () => {
                                     placeholder="Enter Your Password"
                                     {...register("password", { required: true, minLength: 6, maxLength: 12 })}
                                 />
-                                {errors.password?.type === 'required' && <span className="text-red-600 font-semibold">Password is required</span>}
-                                {errors.password?.type === 'minLength' && <span className="text-red-600 font-semibold">Password must be longer then 6 letter</span>}
-                                {errors.password?.type === 'maxLength' && <span className="text-red-600 font-semibold">Password must be less then 12 letter</span>}
+                                {errors.password?.type === 'required' && <span className="text-red-600 font-semibold">Password is required***</span>}
+                                {errors.password?.type === 'minLength' && <span className="text-red-600 font-semibold">Password must be longer then 6 letter***</span>}
+                                {errors.password?.type === 'maxLength' && <span className="text-red-600 font-semibold">Password must be less then 12 letter***</span>}
 
                             </div>
 
@@ -141,7 +142,7 @@ const Register = () => {
                         </div>
                         <div className="flex flex-col  items-center mt-3">
                             <p className="text-sm font-medium">Or Register With </p>
-                            {/* <SocialLogin /> */}
+                            <Social/>
                         </div>
                     </div>
                     <div className="hidden bg-cover lg:block lg:w-1/2">

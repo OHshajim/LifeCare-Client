@@ -6,7 +6,6 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivetRoute = ({ children }) => {
     const { user, loading } = useAuth()
     const location = useLocation()
-    console.log(location);
 
     if (loading) {
         return <Progress value={50} variant="gradient" />
