@@ -8,3 +8,17 @@
     display: flex;
     justify-content: center;
 }
+
+
+/* for camp Details Dialog */
+.fixedInfo:focus {
+    border-top-color: black !important;
+}
+.fixedInfo {
+    border-top-color: rgb(176 190 197 / var(--tw-border-opacity))    !important;
+}
+
+.css-t3ipsp-control{
+    border-color: black !important;
+    box-shadow: 0px 0px 0px 1px black !important;
+}

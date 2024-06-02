@@ -120,14 +120,14 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Camp Name
                                     </Typography>
-                                    <Input className="w-full" value={Camp_Name}
+                                    <Input className="w-full fixedInfo " value={Camp_Name} 
                                         {...register("Camp_Name", { required: true })} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Camp Fees
                                     </Typography>
-                                    <Input className="w-full" value={Camp_Fees}
+                                    <Input className="w-full fixedInfo" value={Camp_Fees}
                                         {...register("Camp_Fees", { required: true })} />
                                 </div>
                             </div>
@@ -136,31 +136,31 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Healthcare Professional Name
                                     </Typography>
-                                    <Input className="w-full" value={Healthcare_Professional_Name}
+                                    <Input className="w-full fixedInfo" value={Healthcare_Professional_Name}
                                         {...register("Healthcare_Professional_Name", { required: true })} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Location
                                     </Typography>
-                                    <Input className="w-full" value={Location}
+                                    <Input className="w-full fixedInfo" value={Location}
                                         {...register("Location", { required: true })} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
-                                <div className="md:w-1/2 w-full">
+                                <div className="md:w-1/2 w-full ">
                                     <Typography className="mb-2" variant="h6">
                                         Participant Name
                                     </Typography>
                                     <Input {...register("ParticipantName", { required: true })}
-                                        className="w-full" value={user?.displayName} />
+                                        className="w-full fixedInfo" value={user?.displayName} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Participant Email
                                     </Typography>
                                     <Input {...register("ParticipantEmail", { required: true })}
-                                        className="w-full" value={user?.email} />
+                                        className="w-full fixedInfo" value={user?.email} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -175,7 +175,7 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Gender
                                     </Typography>
-                                    <Select options={options} onChange={handleSelect} required />
+                                    <Select options={options} onChange={handleSelect} required className="select" />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -183,8 +183,8 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Phone Number
                                     </Typography>
-                                    <Input {...register("PhoneNumber", { required: true })}
-                                        type="number" maxLength={12} className="w-full" label="Enter Your Number" />
+                                    <Input {...register("PhoneNumber", { required: true })} 
+                                        type="number" maxLength={12} className="w-full " label="Enter Your Number" />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
@@ -196,7 +196,7 @@ const CampDetails = () => {
 
                             </div>
 
-                            <Input type="submit" variant="outlined" value='Registration' />
+                            <Input type="submit" variant="outlined" value='Registration'className="fixedInfo" />
                         </form>
                     </CardBody>
 
