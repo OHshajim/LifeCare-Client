@@ -19,7 +19,7 @@ const CampDetails = () => {
     const { id } = useParams()
     const [gender, setGender] = useState('')
     const [error, setError] = useState(false)
-    const { data: campDetails = {}, isPending: loading } = useQuery({
+    const { data: campDetails = {}, isPending: loading, refetch } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/camp/${id}`);
@@ -56,6 +56,7 @@ const CampDetails = () => {
         const registrationData = { ...data, gender: gender, campId: _id }
         console.log(registrationData);
 
+
         await axiosPublic.post('/registeredCamp', registrationData)
             .then(res => {
                 if (res.data.insertedId) {
@@ -64,6 +65,7 @@ const CampDetails = () => {
                         text: 'Congratulation, Welcome to the camp',
                         icon: "success"
                     });
+                    refetch()
                     reset()
                     handleOpen()
                 }
