@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useFrom from "../../Hooks/useFrom";
 import Swal from "sweetalert2";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
     const { CreateUser, updateUser } = useAuth()
     const location = useLocation()
     const navigate = useFrom(location)
-    // const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
     const {
         register,
         handleSubmit,
@@ -22,17 +22,27 @@ const Register = () => {
             .then(async (res) => {
                 console.log(res.user);
                 await updateUser(name, photoURL)
-                    .then(() => {
-                        navigate();
-                        Swal.fire({
-                            title: 'Successfully Registered',
-                            text: `Congratulations, ${name}! You have successfully registered.`,
-                            icon: "success"
-                        });
+                    .then(async () => {
+                        const user = { name: name, email: email, photoURL: photoURL }
+                        await axiosPublic.post('/users', user)
+                            .then(result => {
+                                console.log(result);
+                                Swal.fire({
+                                    title: 'Successfully Registered',
+                                    text: `Congratulations, ${name}! You have successfully registered.`,
+                                    icon: "success"
+                                });
+                                navigate();
+                            })
                     })
             })
             .catch((error) => {
                 console.log(error);
+                Swal.fire({
+                    title: 'Something Wrong',
+                    text: 'Please, Try Again...!',
+                    icon: "error"
+                });
             });
 
     }
