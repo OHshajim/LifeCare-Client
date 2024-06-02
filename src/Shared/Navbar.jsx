@@ -47,8 +47,8 @@ const Nav = () => {
                 </Link>
             </li>
             <li>
-                <Link to='/' className="flex items-center ">
-                    Dashboard
+                <Link to='/availableCamps' className="flex items-center ">
+                    Available Camps
                 </Link>
             </li>
 
@@ -69,9 +69,9 @@ const Nav = () => {
     return (
         <div className="w-screen">
             <div
-                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#00000027]" : " bg-[#00000015] w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
+                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#ffffff] text-black" : " text-white bg-transparent w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
 
-                <div className="w-screen text-white  px-4 lg:px-8 py-2 bg-transparent border-none ">
+                <div className="w-screen  px-4 lg:px-8 py-2 bg-transparent border-none ">
                     <div className="flex items-center justify-between ">
                         <div className="flex gap-3">
                             <IconButton
@@ -87,9 +87,9 @@ const Nav = () => {
                                 }
                             </IconButton>
                             <div className="flex items-center gap-1">
-                                <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14"/>
-                                < h3 className="text-xl">
-                                    LifeCare
+                                <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14" />
+                                < h3 className="text-xl ">
+                                    <span className="text-2xl text-[#81C9E9] font-bold">L</span>ife<span className="text-2xl text-[#81C9E9] font-bold">C</span>are
                                 </h3>
                             </div>
                         </div>

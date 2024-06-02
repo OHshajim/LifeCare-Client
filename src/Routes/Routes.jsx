@@ -5,6 +5,7 @@ import CampDetails from "../Components/CampDetails";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import PrivetRoute from "./PrivetRoute";
+import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 
 const Routes = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/availableCamps',
+                element: <AvailableCamps/>
             },
             {
                 path: '/camp/:id',
