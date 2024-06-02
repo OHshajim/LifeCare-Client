@@ -27,8 +27,7 @@ const CampDetails = () => {
             return res.data;
         }
     })
-    const { _id, Camp_Fees, Camp_Name, Date_Time, Description, Healthcare_Professional_Name, Image, Location, Participant_Count
-    } = campDetails;
+    const { _id, campFees, campName, date, description, healthcareProfessionalName, image, location, participantCount } = campDetails;
 
     // form
     const options = [
@@ -97,28 +96,28 @@ const CampDetails = () => {
 
             <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
                 <div className="flex items-center justify-center w-full lg:w-1/2">
-                    <img className="object-cover w-full h-full  rounded-md" src={Image} alt={Camp_Name} />
+                    <img className="object-cover w-full h-full  rounded-md" src={image} alt={campName} />
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{Camp_Name}</h1>
-                    <p className="mt-4 text-gray-600 dark:text-gray-300">{Description}</p>
+                    <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{campName}</h1>
+                    <p className="mt-4 text-gray-600 dark:text-gray-300">{description}</p>
                     <div className="-px-3 text-base space-y-1 lg:space-y-3  mt-5">
                         <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-1">
 
                             <p className="flex items-center gap-1 "> Healthcare Professional:
-                                <FaUserDoctor className="text-lg" /> {Healthcare_Professional_Name}</p>
+                                <FaUserDoctor className="text-lg" /> {healthcareProfessionalName}</p>
 
-                            <p className="flex items-center gap-1 ">Participants: <HiUserGroup className="text-lg" />{Participant_Count}</p>
+                            <p className="flex items-center gap-1 ">Participants: <HiUserGroup className="text-lg" />{participantCount}</p>
                         </div>
 
                         <div className="flex justify-between lg:items-center flex-col lg:flex-row space-y-1">
 
                             <p className="flex items-center gap-1 "> Date:<BsCalendarDateFill className="text-base" />
-                                {Date_Time}</p>
+                                {date}</p>
                             <p className="flex items-center gap-1 ">Location: <MdAddLocation className="text-xl" />{Location}</p>
                         </div>
                         <div className="flex justify-between items-center ">
-                            <p className="font-bold">Camp Fees: ${Camp_Fees}</p>
+                            <p className="font-bold">Camp Fees: ${campFees}</p>
                         </div>
                     </div>
                     <div className="mt-5 flex justify-end ">
@@ -154,15 +153,15 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Camp Name
                                     </Typography>
-                                    <Input className="w-full fixedInfo " value={Camp_Name}
-                                        {...register("Camp_Name")} />
+                                    <Input className="w-full fixedInfo " value={campName}
+                                        {...register("campName")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Camp Fees
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={Camp_Fees}
-                                        {...register("Camp_Fees")} />
+                                    <Input className="w-full fixedInfo" value={campFees}
+                                        {...register("campFees")} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -170,15 +169,15 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Healthcare Professional Name
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={Healthcare_Professional_Name}
-                                        {...register("Healthcare_Professional_Name")} />
+                                    <Input className="w-full fixedInfo" value={healthcareProfessionalName}
+                                        {...register("healthcareProfessionalName")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Location
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={Location}
-                                        {...register("Location")} />
+                                    <Input className="w-full fixedInfo" value={location}
+                                        {...register("location")} />
                                 </div>
                             </div>
                             <div className="flex items-center flex-col md:flex-row gap-5">
@@ -186,14 +185,14 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Participant Name
                                     </Typography>
-                                    <Input {...register("ParticipantName")}
+                                    <Input {...register("participantName")}
                                         className="w-full fixedInfo" value={user?.displayName} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Participant Email
                                     </Typography>
-                                    <Input {...register("ParticipantEmail")}
+                                    <Input {...register("participantEmail")}
                                         className="w-full fixedInfo" value={user?.email} />
                                 </div>
                             </div>
@@ -202,9 +201,9 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Age
                                     </Typography>
-                                    <Input {...register("Age", { required: true })}
+                                    <Input {...register("age", { required: true })}
                                         type="number" min={1} max={150} className="w-full" label="Enter Your Age" />
-                                    {errors.Age && <span className="text-red-600 font-semibold">Age is required***</span>}
+                                    {errors.age && <span className="text-red-600 font-semibold">Age is required***</span>}
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
@@ -219,17 +218,17 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Phone Number
                                     </Typography>
-                                    <Input {...register("PhoneNumber", { required: true })}
+                                    <Input {...register("phoneNumber", { required: true })}
                                         type="number" maxLength={12} className="w-full " label="Enter Your Number" />
-                                    {errors.PhoneNumber && <span className="text-red-600 font-semibold">Phone Number is required***</span>}
+                                    {errors.phoneNumber && <span className="text-red-600 font-semibold">Phone Number is required***</span>}
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Emergency Contact
                                     </Typography>
-                                    <Input {...register("EmergencyContact", { required: true })}
+                                    <Input {...register("emergencyContact", { required: true })}
                                         type="number" maxLength={12} className="w-full" label="Enter Emergency Contact" />
-                                    {errors.EmergencyContact && <span className="text-red-600 font-semibold">Emergency Contact is required***</span>}
+                                    {errors.emergencyContact && <span className="text-red-600 font-semibold">Emergency Contact is required***</span>}
                                 </div>
 
                             </div>

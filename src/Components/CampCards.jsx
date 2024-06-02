@@ -7,41 +7,34 @@ import { MdAddLocation } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const CampCards = ({ camp }) => {
-    const { Camp_Name,
-        Image,
-        Camp_Fees,
-        Date_Time,
-        Location,
-        Healthcare_Professional_Name,
-        Participant_Count,
-        _id
-    } = camp;
+
+    const { _id, campFees, campName, date, description, healthcareProfessionalName, image, location, participantCount } = camp;
     return (
         <div>
             <Card className="mt-6 ">
                 <CardHeader color="blue-gray" className="relative h-56">
                     <img
-                        src={Image}
-                        alt={Camp_Name}
+                        src={image}
+                        alt={campName}
                     />
                 </CardHeader>
                 <CardBody className="space-y-2">
                     <div className="flex justify-between items-center ">
                         <Typography variant="h5" color="blue-gray" className="mb-2">
-                            {Camp_Name}
+                            {campName}
                         </Typography>
-                        <p className="font-bold">${Camp_Fees}</p>
+                        <p className="font-bold">${campFees}</p>
                     </div>
                     <div className="flex justify-between items-center ">
 
-                        <p className="flex items-center gap-1 "><HiUserGroup className="text-lg" />{Participant_Count}</p>
+                        <p className="flex items-center gap-1 "><HiUserGroup className="text-lg" />{participantCount}</p>
                         <p className="flex items-center gap-1 "><FaUserDoctor className="text-lg" />
-                            {Healthcare_Professional_Name}</p>
+                            {healthcareProfessionalName}</p>
                     </div>
                     <div className="flex justify-between items-center ">
                         <p className="flex items-center gap-1 "><BsCalendarDateFill className="text-base" />
-                            {Date_Time}</p>
-                        <p className="flex items-center gap-1 "><MdAddLocation className="text-xl" />{Location}</p>
+                            {date}</p>
+                        <p className="flex items-center gap-1 "><MdAddLocation className="text-xl" />{location}</p>
                     </div>
                 </CardBody>
                 <CardFooter className="pt-0">
