@@ -1,17 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import { useParams } from "react-router-dom";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { Link, useParams } from "react-router-dom";
 import { HiUserGroup } from "react-icons/hi";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { MdAddLocation } from "react-icons/md";
 import { Button, Card, CardBody, Dialog, Input, Spinner, Typography, } from "@material-tailwind/react";
 import { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
+import useAuth from "../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 
 import Select from 'react-select'
 import Swal from "sweetalert2";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const CampDetails = () => {
     const axiosPublic = useAxiosPublic()
@@ -81,13 +82,18 @@ const CampDetails = () => {
     const handleOpen = () => setOpen(!open);
     return (
         <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10 py-20">
+            <div>
+                <Link to={'/'}>
+                    <Button className=" flex items-center gap-2  mb-5"><IoMdArrowRoundBack />
+                        Back</Button>
+                </Link>
+            </div>
             {/* loader */}
             <div className="flex justify-center ">
                 {
                     loading && <Spinner className="h-10 w-10" />
                 }
             </div>
-
 
             <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
                 <div className="flex items-center justify-center w-full lg:w-1/2">
@@ -96,8 +102,8 @@ const CampDetails = () => {
                 <div className="w-full lg:w-1/2">
                     <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{Camp_Name}</h1>
                     <p className="mt-4 text-gray-600 dark:text-gray-300">{Description}</p>
-                    <div className="-px-3 text-base space-y-3 mt-5">
-                        <div className="flex justify-between items-center ">
+                    <div className="-px-3 text-base space-y-1 lg:space-y-3  mt-5">
+                        <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-1">
 
                             <p className="flex items-center gap-1 "> Healthcare Professional:
                                 <FaUserDoctor className="text-lg" /> {Healthcare_Professional_Name}</p>
@@ -105,7 +111,7 @@ const CampDetails = () => {
                             <p className="flex items-center gap-1 ">Participants: <HiUserGroup className="text-lg" />{Participant_Count}</p>
                         </div>
 
-                        <div className="flex justify-between items-center ">
+                        <div className="flex justify-between lg:items-center flex-col lg:flex-row space-y-1">
 
                             <p className="flex items-center gap-1 "> Date:<BsCalendarDateFill className="text-base" />
                                 {Date_Time}</p>

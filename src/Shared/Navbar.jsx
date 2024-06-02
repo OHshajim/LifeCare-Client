@@ -1,8 +1,6 @@
 import {
     // MobileNav,
-    Typography,
     IconButton,
-    Collapse,
     Avatar,
     Menu,
     MenuHandler,
@@ -17,6 +15,7 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 const Nav = () => {
     const [openNav, setOpenNav] = useState(false);
+
     const { user, Logout } = useAuth()
     const handleLogout = () => {
         Swal.fire({
@@ -36,27 +35,13 @@ const Nav = () => {
                     title: "Successfully Logout",
                     text: "You are now logged out. Stay healthy!",
                     icon: "success",
-                    showClass: {
-                        popup: `
-                        animate__animated
-                        animate__fadeInUp
-                        animate__faster
-                      `
-                    },
-                    hideClass: {
-                        popup: `
-                        animate__animated
-                        animate__fadeOutDown
-                        animate__faster
-                      `
-                    }
                 });
             }
         })
     }
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
-            <li>
+            <li className="">
                 <Link to='/' className="flex items-center ">
                     Home
                 </Link>
@@ -66,44 +51,7 @@ const Nav = () => {
                     Dashboard
                 </Link>
             </li>
-            {
-                user ? <>
-                    <Menu>
-                        <MenuHandler>
-                            <Avatar
-                                src={user?.photoURL}
-                                alt={user?.displayName}
-                                withBorder={true}
-                                color="green"
-                                className="p-1 cursor-pointer w-14 h-14"
-                            />
-                        </MenuHandler>
-                        <MenuList className="space-y-4">
 
-                            <p className="px-3 my-2">{user?.displayName}</p>
-
-                            <MenuItem>
-                                <Link to='/dashboard' className="flex items-center ">
-                                    Dashboard
-                                </Link>
-                            </MenuItem>
-                            <MenuItem onClick={handleLogout} className="border text-red-600 border-red-600">
-                                Logout
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
-
-
-                </>
-                    :
-                    <>
-                        <li>
-                            <Link to='/login' className="flex items-center ">
-                                Join Us
-                            </Link>
-                        </li>
-                    </>
-            }
         </ul>
     );
 
@@ -121,19 +69,11 @@ const Nav = () => {
     return (
         <div className="w-screen">
             <div
-                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#00000027]" : " w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
+                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#00000027]" : " bg-[#00000015] w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
 
-                <div className="w-screen text-white  px-4 py-2 lg:px-8 lg:py-4 bg-transparent border-none ">
+                <div className="w-screen text-white  px-4 lg:px-8 py-2 bg-transparent border-none ">
                     <div className="flex items-center justify-between ">
-                        <Typography variant="h4"
-                            className="mr-4   font-bold"
-                        >
-                            LifeCare
-                        </Typography>
-                        <div className="flex items-center gap-4">
-                            <div className="mr-4 hidden lg:block">
-                                {navList}
-                            </div>
+                        <div className="flex gap-3">
                             <IconButton
                                 variant="text"
                                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -146,14 +86,71 @@ const Nav = () => {
                                     <FaList className="text-xl" />
                                 }
                             </IconButton>
+                            <div className="flex items-center gap-1">
+                                <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14"/>
+                                < h3 className="text-xl">
+                                    LifeCare
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="flex items-center  gap-4 ">
+                            <div className="flex items-center  gap-4">
+                                <div className="mr-4 hidden lg:block">
+                                    {navList}
+                                </div>
+
+                            </div>
+                            <div>
+                                {
+                                    user ? <>
+                                        <Menu>
+                                            <MenuHandler>
+                                                <Avatar
+                                                    src={user?.photoURL}
+                                                    alt={user?.displayName}
+                                                    withBorder={true}
+                                                    color="blue"
+                                                    className="p-1 cursor-pointer w-14 h-14"
+                                                />
+                                            </MenuHandler>
+                                            <MenuList className="space-y-4">
+
+                                                <p className="px-3 my-2">{user?.displayName}</p>
+
+                                                <MenuItem>
+                                                    <Link to='/dashboard' className="flex items-center ">
+                                                        Dashboard
+                                                    </Link>
+                                                </MenuItem>
+                                                <MenuItem onClick={handleLogout} className="border text-red-600 border-red-600">
+                                                    Logout
+                                                </MenuItem>
+                                            </MenuList>
+                                        </Menu>
+
+
+                                    </>
+                                        :
+                                        <>
+                                            <li>
+                                                <Link to='/login' className="flex items-center ">
+                                                    Join Us
+                                                </Link>
+                                            </li>
+                                        </>
+                                }
+                            </div>
                         </div>
                     </div>
-                    <Collapse open={openNav} className='block lg:hidden'>
-                        {navList}
-                    </Collapse >
                 </div>
 
             </div>
+            <div className={` absolute w-36 sm:w-56  duration-500 lg:hidden p-2 menu menu-sm dropdown-content bg-[#fff] rounded-lg shadow  rounded-box z-20 
+                    ${openNav ? 'top-16 left-3' : '-left-96 top-16 '}`}>
+                <div className="px-1 sm:px-3 ">
+                    {navList}
+                </div>
+            </div >
         </div>
 
     );

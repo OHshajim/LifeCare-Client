@@ -54,7 +54,7 @@ const Testimonial = () => {
                                     <img
                                         src={feedback.photoURL}
                                         alt={feedback.name}
-                                        className='w-12 h-12 md:h-16  md:w-16 rounded-full  border-4 border-blue-600'
+                                        className='w-12 h-12 md:h-16  md:w-16 rounded-full p-1 border-2 border-blue-600'
                                     />
                                     <div>
                                         <h4 className='font-bold'>

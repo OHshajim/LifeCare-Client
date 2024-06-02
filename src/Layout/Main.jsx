@@ -5,8 +5,10 @@ import Nav from "../Shared/Navbar";
 const Main = () => {
     return (
         <div>
-            <Nav/>
-            <Outlet />
+            <Nav />
+            <div className="min-h-[calc(100vh-256px)]">
+                <Outlet />
+            </div>
             <Footer />
         </div>
     );
