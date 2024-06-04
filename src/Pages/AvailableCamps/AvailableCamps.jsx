@@ -13,6 +13,7 @@ const AvailableCamps = () => {
     const axiosPublic = useAxiosPublic()
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('')
+    const [isThree, setThree] = useState(true)
     const { data: camps = [], isPending: loading, refetch } = useQuery({
         queryKey: ['camps', search, sort],
         queryFn: async () => {
@@ -62,10 +63,17 @@ const AvailableCamps = () => {
                         </Button>
                     </form>
                 </div>
-                {/* sort */}
-                <div className="flex justify-center mb-7 ">
-                    <div className=" w-40">
-                        <Select options={options} onChange={handleSort} className="select " placeholder='Sort By' />
+                <div className="xl:flex xl:justify-between ">
+                    <div className="xl:block hidden">
+                        <Button
+                            onClick={() => setThree(!isThree)}>{isThree ? 'Make Two' : 'Make Three'}</Button>
+                    </div>
+
+                    {/* sort */}
+                    <div className="flex justify-center mb-7 ">
+                        <div className=" w-40">
+                            <Select options={options} onChange={handleSort} className="select " placeholder='Sort By' />
+                        </div>
                     </div>
                 </div>
                 {/* loading */}
@@ -82,7 +90,7 @@ const AvailableCamps = () => {
                 }
 
                 {/* cart */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 ">
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${isThree ? '!grid-cols-3' : ''}`}>
                     {
                         camps.map(camp => <CampCards key={camp._id} camp={camp} />)
                     }

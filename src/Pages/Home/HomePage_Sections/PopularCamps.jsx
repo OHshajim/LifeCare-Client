@@ -32,7 +32,7 @@ const PopularCamps = () => {
                 }
             </div>
             <div className="my-10 flex justify-center">
-            <Link to='/availableCamps'><Button>See All</Button></Link> 
+            <Link to='/availableCamps'><Button>See All Camps</Button></Link> 
             </div>
         </div>
     );

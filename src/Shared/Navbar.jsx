@@ -68,7 +68,7 @@ const Nav = () => {
     return (
         <div className="w-screen relative">
             <div
-                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#184e5d]  text-white " : " text-white bg-transparent w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
+                className={fix ? " fixed z-10 w-screen duration-500 bg-[#000000]  text-white " : " text-white  w-screen  duration-300 fixed z-10 bg-[#00000048] "}>
 
                 <div className="w-screen  px-4 lg:px-8 py-2 bg-transparent border-none ">
                     <div className="flex items-center justify-between ">
@@ -146,7 +146,7 @@ const Nav = () => {
 
                 <div className={` absolute w-36 sm:w-56  duration-500 lg:hidden p-2 menu menu-sm dropdown-content bg-[#fff] rounded-lg shadow  rounded-box z-20 
                     ${openNav ? 'top-16 left-3' : '-left-96 top-16 '}`}>
-                    <div className="px-1 sm:px-3 ">
+                    <div className="px-1 sm:px-3 text-black">
                         {navList}
                     </div>
                 </div >
