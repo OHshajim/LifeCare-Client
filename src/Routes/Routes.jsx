@@ -6,6 +6,8 @@ import Register from "../Pages/Authentication/Register";
 import PrivetRoute from "./PrivetRoute";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 import CampDetails from "../Pages/CampDetails/CampDetails";
+import Dashboard from "../Layout/Dashboard";
+import AddCamp from "../Pages/DashboardPages/Organizer/AddCamp";
 
 const Routes = createBrowserRouter([
     {
@@ -34,6 +36,16 @@ const Routes = createBrowserRouter([
             },
         ]
     },
+    {
+        path:'dashBoard',
+        element:<Dashboard/>,
+        children:[
+            {
+                path:'/dashBoard/addCamp',
+                element:<AddCamp/>,
+            }
+        ]
+    }
 ]);
 
 export default Routes;
