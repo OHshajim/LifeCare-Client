@@ -12,9 +12,9 @@ const Home = () => {
             <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10">
                 <PopularCamps />
             </div>
-           
+            <SectionTitle subHeading={'Lets join'} heading={"Lets see "} />
             <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10">
-               
+
                 <Testimonial />
             </div>
         </div>

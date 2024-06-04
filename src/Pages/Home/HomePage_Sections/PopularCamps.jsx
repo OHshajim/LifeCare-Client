@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import CampCards from "../../../Components/CampCards";
-import { Spinner } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import Loader from "../../../Components/Loader/Loader";
 
 const PopularCamps = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: camps = [], isPending: loading } = useQuery({
+    const { data: camps = [], isPending: loading ,} = useQuery({
         queryKey: ['camps'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/camps')
+            const res = await axiosPublic.get('/popularCamps')
             return res.data;
         }
     })
@@ -19,7 +21,7 @@ const PopularCamps = () => {
             {/* loader */}
             <div className="flex justify-center ">
                 {
-                    loading && <Spinner className="h-10 w-10" />
+                    loading && <Loader/>
                 }
             </div>
 
@@ -28,6 +30,9 @@ const PopularCamps = () => {
                 {
                     camps.map(camp => <CampCards key={camp._id} camp={camp} />)
                 }
+            </div>
+            <div className="my-10 flex justify-center">
+            <Link to='/availableCamps'><Button>See All</Button></Link> 
             </div>
         </div>
     );

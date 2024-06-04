@@ -6,11 +6,13 @@ import SectionTitle from "../../Shared/SectionTitle";
 import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Loader from "../../Components/Loader/Loader";
+
 const AvailableCamps = () => {
     const axiosPublic = useAxiosPublic()
     const [search, setSearch] = useState('')
     const { data: camps = [], isPending: loading, refetch } = useQuery({
-        queryKey: ['camps'],
+        queryKey: ['camps', search],
         queryFn: async () => {
             const res = await axiosPublic.get(`/camps?search=${search}`)
             console.log(res);
@@ -24,15 +26,12 @@ const AvailableCamps = () => {
 
     const handleSearch = async (data) => {
         setSearch(data.search);
-        if(loading){
-            return <p>load</p>
-        }
-        if (search === ''){
+        if (search === '') {
             refetch()
             return;
         }
         console.log(data);
-        await refetch()
+        return await refetch();
     }
     return (
         <div>
@@ -50,7 +49,14 @@ const AvailableCamps = () => {
                     </form>
                 </div>
                 {
-                    loading && <p>Load</p>
+                    loading && <div className="flex justify-center ">
+                        {
+                            loading && <Loader />
+                        }
+                    </div>
+                }
+                {
+                    !loading && (camps.length == 0) && <p className="text-red-700 my-20"></p>
                 }
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 ">
                     {

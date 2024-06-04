@@ -16,9 +16,10 @@ import { useQuery } from '@tanstack/react-query';
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import Loader from '../../../Components/Loader/Loader';
 const Testimonial = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: feedbacks = [] } = useQuery({
+    const { data: feedbacks = [], isPending: loading } = useQuery({
         queryKey: ['feedbacks'],
         queryFn: async () => {
             const res = await axiosPublic.get('/feedbacks')
@@ -31,6 +32,15 @@ const Testimonial = () => {
             <div className=' flex justify-center items-center w-full'>
                 <img src="https://i.ibb.co/ftJY636/charity-1807427.png" alt="" className=" max-w-32 sm:max-w-52 " />
             </div>
+
+            {
+                loading && <div className="flex justify-center my-10">
+                    {
+                        loading && <Loader />
+                    }
+                </div>
+            }
+
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -45,9 +55,9 @@ const Testimonial = () => {
             >
                 {feedbacks.map(feedback => <SwiperSlide key={feedback._id}>
                     <div className='flex flex-col items-center '>
-                        <div  className="w-full max-w-5xl px-3 sm:px-10">
+                        <div className="w-full max-w-5xl px-3 sm:px-10">
                             <div
-                                
+
                                 className="flex md:items-center justify-between  py-8 flex-col md:flex-row"
                             >
                                 <div className="mx-0 flex items-center gap-4 ">
@@ -72,7 +82,7 @@ const Testimonial = () => {
                                     />
                                 </div>
                             </div>
-                            <p  className='text-sm sm:text-base'>{feedback.comment}</p>
+                            <p className='text-sm sm:text-base'>{feedback.comment}</p>
                         </div>
                     </div>
                 </SwiperSlide>)

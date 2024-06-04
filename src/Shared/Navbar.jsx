@@ -51,7 +51,6 @@ const Nav = () => {
                     Available Camps
                 </Link>
             </li>
-
         </ul>
     );
 
@@ -67,13 +66,13 @@ const Nav = () => {
     }
     window.addEventListener("scroll", setFixed)
     return (
-        <div className="w-screen">
+        <div className="w-screen relative">
             <div
-                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#ffffff] text-black" : " text-white bg-transparent w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
+                className={fix ? " fixed z-10 w-screen duration-500 backdrop-blur-sm bg-[#184e5d]  text-white " : " text-white bg-transparent w-screen  duration-300 fixed z-10 backdrop-brightness-100"}>
 
                 <div className="w-screen  px-4 lg:px-8 py-2 bg-transparent border-none ">
                     <div className="flex items-center justify-between ">
-                        <div className="flex gap-3">
+                        <div className="flex items-center gap-3 ">
                             <IconButton
                                 variant="text"
                                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -128,15 +127,16 @@ const Nav = () => {
                                             </MenuList>
                                         </Menu>
 
-
                                     </>
                                         :
                                         <>
-                                            <li>
-                                                <Link to='/login' className="flex items-center ">
-                                                    Join Us
-                                                </Link>
-                                            </li>
+                                            <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
+                                                <li>
+                                                    <Link to='/login' className="flex items-center ">
+                                                        Join Us
+                                                    </Link>
+                                                </li>
+                                            </ul>
                                         </>
                                 }
                             </div>
@@ -144,13 +144,13 @@ const Nav = () => {
                     </div>
                 </div>
 
-            </div>
-            <div className={` absolute w-36 sm:w-56  duration-500 lg:hidden p-2 menu menu-sm dropdown-content bg-[#fff] rounded-lg shadow  rounded-box z-20 
+                <div className={` absolute w-36 sm:w-56  duration-500 lg:hidden p-2 menu menu-sm dropdown-content bg-[#fff] rounded-lg shadow  rounded-box z-20 
                     ${openNav ? 'top-16 left-3' : '-left-96 top-16 '}`}>
-                <div className="px-1 sm:px-3 ">
-                    {navList}
-                </div>
-            </div >
+                    <div className="px-1 sm:px-3 ">
+                        {navList}
+                    </div>
+                </div >
+            </div>
         </div>
 
     );
