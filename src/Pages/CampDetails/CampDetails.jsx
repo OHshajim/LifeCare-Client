@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { Link, useParams } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useParams } from "react-router-dom";
 import { HiUserGroup } from "react-icons/hi";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { MdAddLocation } from "react-icons/md";
 import { Button, Card, CardBody, Dialog, Input, Spinner, Typography, } from "@material-tailwind/react";
 import { useState } from "react";
-import useAuth from "../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 
 import Select from 'react-select'
 import Swal from "sweetalert2";
-import { IoMdArrowRoundBack } from "react-icons/io";
 
 const CampDetails = () => {
     const axiosPublic = useAxiosPublic()
@@ -39,6 +38,7 @@ const CampDetails = () => {
         setGender(element.value)
         setError(false)
     }
+
     const {
         register,
         handleSubmit,
@@ -81,12 +81,6 @@ const CampDetails = () => {
     const handleOpen = () => setOpen(!open);
     return (
         <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10 py-20">
-            <div>
-                <Link to={'/'}>
-                    <Button className=" flex items-center gap-2  mb-5"><IoMdArrowRoundBack />
-                        Back</Button>
-                </Link>
-            </div>
             {/* loader */}
             <div className="flex justify-center ">
                 {
@@ -209,7 +203,7 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Gender
                                     </Typography>
-                                    <Select options={options} onChange={handleSelect} className="select" />
+                                    <Select options={options} onChange={handleSelect} className="select" placeholder='Select your Gender' />
                                     {error && <span className="text-red-600 font-semibold">Age is required***</span>}
                                 </div>
                             </div>

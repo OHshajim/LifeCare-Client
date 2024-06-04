@@ -5,10 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 // import required modules
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
@@ -42,20 +41,23 @@ const Testimonial = () => {
             }
 
             <Swiper
-                spaceBetween={30}
+                slidesPerView={1.7}
+                spaceBetween={40}
                 centeredSlides={true}
+                pagination={{
+                    clickable: true,
+                }}
                 autoplay={{
-                    delay: 50000000,
+                    delay: 2000,
                     disableOnInteraction: false,
                 }}
                 loop={true}
-                navigation={true}
-                modules={[Autoplay, Navigation]}
+                modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
                 {feedbacks.map(feedback => <SwiperSlide key={feedback._id}>
-                    <div className='flex flex-col items-center '>
-                        <div className="w-full max-w-5xl px-3 sm:px-10">
+                    <div className='flex flex-col items-center pb-10'>
+                        <div className="w-full  px-3 sm:px-10">
                             <div
 
                                 className="flex md:items-center justify-between  py-8 flex-col md:flex-row"
@@ -82,7 +84,8 @@ const Testimonial = () => {
                                     />
                                 </div>
                             </div>
-                            <p className='text-sm sm:text-base'>{feedback.comment}</p>
+                            <hr />
+                            <p className='text-sm sm:text-base my-2'>{feedback.comment}</p>
                         </div>
                     </div>
                 </SwiperSlide>)

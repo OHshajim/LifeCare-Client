@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import CampDetails from "../Components/CampDetails";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import PrivetRoute from "./PrivetRoute";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
+import CampDetails from "../Pages/CampDetails/CampDetails";
 
 const Routes = createBrowserRouter([
     {
