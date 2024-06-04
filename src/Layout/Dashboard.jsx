@@ -93,7 +93,7 @@ const Dashboard = () => {
                     {/*  } */}
                 </ul>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 p-14">
                 <Outlet/>
             </div>
         </div>

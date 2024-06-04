@@ -1,28 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import { HiUserGroup } from "react-icons/hi";
 import { FaUserDoctor } from "react-icons/fa6";
 import { BsCalendarDateFill } from "react-icons/bs";
 import { MdAddLocation } from "react-icons/md";
-import { Button, Card, CardBody, Dialog, Input, Spinner, Typography, } from "@material-tailwind/react";
+import { Button, Card, CardBody, Dialog, Input, Typography, } from "@material-tailwind/react";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 
 import Select from 'react-select'
 import Swal from "sweetalert2";
+import Loader from "../../Components/Loader/Loader";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const CampDetails = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const { id } = useParams()
     const [gender, setGender] = useState('')
     const [error, setError] = useState(false)
     const { data: campDetails = {}, isPending: loading, refetch } = useQuery({
-        queryKey: ['details'],
+        queryKey: ['campDetails'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/camp/${id}`);
+            const res = await axiosSecure.get(`/camp/${id}`);
             return res.data;
         }
     })
@@ -36,7 +38,7 @@ const CampDetails = () => {
     ]
     const handleSelect = (element) => {
         setGender(element.value)
-        setError(false)
+        setError(false);
     }
 
     const {
@@ -47,7 +49,7 @@ const CampDetails = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        if (!gender) {
+        if (!gender){
             return setError(true);
         }
         else {
@@ -57,7 +59,7 @@ const CampDetails = () => {
         console.log(registrationData);
 
 
-        await axiosPublic.post('/registeredCamp', registrationData)
+        await axiosSecure.post('/registeredCamp', registrationData)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -65,9 +67,9 @@ const CampDetails = () => {
                         text: 'Congratulation, Welcome to the camp',
                         icon: "success"
                     });
-                    refetch()
-                    reset()
-                    handleOpen()
+                    refetch();
+                    reset();
+                    handleOpen();
                 }
             })
             .catch(error => {
@@ -84,11 +86,11 @@ const CampDetails = () => {
             {/* loader */}
             <div className="flex justify-center ">
                 {
-                    loading && <Spinner className="h-10 w-10" />
+                    loading && <Loader/>
                 }
             </div>
 
-            <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
+            {   !loading && <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
                 <div className="flex items-center justify-center w-full lg:w-1/2">
                     <img className="object-cover w-full h-full  rounded-md" src={image} alt={campName} />
                 </div>
@@ -118,9 +120,7 @@ const CampDetails = () => {
                         <Button onClick={handleOpen}>Join Camp</Button>
                     </div>
                 </div>
-
-
-            </div>
+            </div>}
             {/* modal */}
             <Dialog
                 size="xl"

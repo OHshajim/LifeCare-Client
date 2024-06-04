@@ -3,12 +3,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import CampBanner from "./AvailableCampSections/CampBanner";
 import CampCards from "../../Components/CampCards";
 import SectionTitle from "../../Shared/SectionTitle";
-import { Button, } from "@material-tailwind/react";
+import { Button, Option, Select, } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Loader from "../../Components/Loader/Loader";
-import Select from 'react-select'
-
+// import Select from 'react-select'
+// import Select from 'react-select'
 const AvailableCamps = () => {
     const axiosPublic = useAxiosPublic()
     const [search, setSearch] = useState('')
@@ -17,7 +17,7 @@ const AvailableCamps = () => {
     const { data: camps = [], isPending: loading, refetch } = useQuery({
         queryKey: ['camps', search, sort],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/camps?search=${search}&&sort=${sort}`)
+            const res = await axiosPublic.get(`/camps?search=${search}&&sortBy=${sort}`)
             console.log(res);
             return res.data;
         }
@@ -27,15 +27,9 @@ const AvailableCamps = () => {
         handleSubmit,
     } = useForm()
 
-    const options = [
-        { value: 'campFees', label: 'Camp Fees' },
-        { value: 'campName', label: 'Camp Name' },
-        { value: 'date', label: 'Date' },
-        { value: 'participantCount', label: 'ParticipantCount' }
-    ]
-    const handleSort = (e) => {
-        console.log(e.value);
-        setSort(e.value)
+    const handleSort = (value) => {
+        console.log(value);
+        setSort(value)
         refetch()
     }
     const handleSearch = async (data) => {
@@ -68,11 +62,18 @@ const AvailableCamps = () => {
                         <Button
                             onClick={() => setThree(!isThree)}>{isThree ? 'Make Two' : 'Make Three'}</Button>
                     </div>
+                           
 
                     {/* sort */}
                     <div className="flex justify-center mb-7 ">
                         <div className=" w-40">
-                            <Select options={options} onChange={handleSort} className="select " placeholder='Sort By' />
+                            <Select  onChange={handleSort} className=" " label="Sort by" >
+                                <Option value="">Default</Option>
+                                <Option value="campName">Camp Name</Option>
+                                <Option value="campFees">Camp Fees</Option>
+                                <Option value="date">Date</Option>
+                                <Option value="participantCount">ParticipantCount</Option>
+                            </Select>
                         </div>
                     </div>
                 </div>
