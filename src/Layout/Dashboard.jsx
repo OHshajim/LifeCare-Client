@@ -3,16 +3,23 @@ import { FaHome } from "react-icons/fa";
 import { FaBook } from "react-icons/fa6";
 import { HiUserGroup } from "react-icons/hi";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+
 
 const Dashboard = () => {
+    const { user } = useAuth()
     return (
         <div className="flex ">
             <div className="bg-[#1d5d77] text-[#ffffff] max-w-xl min-h-screen px-9 pt-10">
-                <div className="flex items-center gap-1">
-                    <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14" />
-                    < h3 className="text-xl ">
-                        <span className="text-2xl text-[#81C9E9] font-bold">L</span>ife<span className="text-2xl text-[#81C9E9] font-bold">C</span>are
-                    </h3>
+            <div className="flex items-center gap-1 mb-10">
+                <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14" />
+                < h3 className="text-xl ">
+                    <span className="text-2xl text-[#81C9E9] font-bold">L</span>ife<span className="text-2xl text-[#81C9E9] font-bold">C</span>are
+                </h3>
+            </div>
+                <div className="flex flex-col justify-center items-center">
+                    <img src={user?.photoURL} alt="" className="rounded-full ring-4 ring-[#81C9E9] w-16 mb-3" />
+                    <h4>{user?.displayName}</h4>
                 </div>
                 <ul className="font-medium pt-8 uppercase space-y-5">
                     {/* { */}
@@ -93,8 +100,8 @@ const Dashboard = () => {
                     {/*  } */}
                 </ul>
             </div>
-            <div className="flex-1 p-14">
-                <Outlet/>
+            <div className="flex-1 px-14">
+                <Outlet />
             </div>
         </div>
     );
