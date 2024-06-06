@@ -8,31 +8,31 @@ import useAuth from "../Hooks/useAuth";
 
 import {
     IconButton,
-   
+
 } from "@material-tailwind/react";
 
 import { useState } from "react";
+import DashboardNav from "../Pages/DashboardPages/HomePage/DashboardNav";
 import NavDrawer from "../Pages/DashboardPages/HomePage/NavDrawer";
 
 const Dashboard = () => {
 
     const [open, setOpen] = useState(0);
-    const [openAlert, setOpenAlert] = useState(true);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
 
-    const openDrawer = () => setIsDrawerOpen(true);
+    // const openDrawer = () => setIsDrawerOpen(true);
     const closeDrawer = () => setIsDrawerOpen(false);
-
-
 
     const { user } = useAuth()
     return (
         <div >
-            <NavDrawer/>
+            <DashboardNav />
+
             {/* <div className="bg-[#1d5d77] text-[#ffffff] max-w-xl min-h-screen px-9 pt-10">
                 
                 <div className="flex flex-col justify-center items-center">
@@ -75,14 +75,14 @@ const Dashboard = () => {
                 </ul>
             </div> */}
 
-                <IconButton variant="text" size="lg" onClick={openDrawer}>
+            {/* <IconButton variant="text" size="lg" onClick={openDrawer}>
                     {isDrawerOpen ? (
                         <p>Close</p>
                     ) : (
                         <p>Open</p>
                     )}
-                </IconButton>
-            
+                </IconButton> */}
+            <NavDrawer isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
             <div className="flex-1 px-14">
                 <Outlet />
             </div>
