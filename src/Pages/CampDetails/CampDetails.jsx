@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import { HiUserGroup } from "react-icons/hi";
 import { FaUserDoctor } from "react-icons/fa6";

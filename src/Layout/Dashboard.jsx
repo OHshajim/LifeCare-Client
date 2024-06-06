@@ -6,25 +6,40 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 
+import {
+    IconButton,
+   
+} from "@material-tailwind/react";
+
+import { useState } from "react";
+import NavDrawer from "../Pages/DashboardPages/HomePage/NavDrawer";
+
 const Dashboard = () => {
+
+    const [open, setOpen] = useState(0);
+    const [openAlert, setOpenAlert] = useState(true);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const handleOpen = (value) => {
+        setOpen(open === value ? 0 : value);
+    };
+
+    const openDrawer = () => setIsDrawerOpen(true);
+    const closeDrawer = () => setIsDrawerOpen(false);
+
+
+
     const { user } = useAuth()
     return (
-        <div className="flex ">
-            <div className="bg-[#1d5d77] text-[#ffffff] max-w-xl min-h-screen px-9 pt-10">
-            <div className="flex items-center gap-1 mb-10">
-                <img src="https://i.ibb.co/H2J9x6Z/Screenshot-2024-06-02-202738.png" alt="" className="w-14" />
-                < h3 className="text-xl ">
-                    <span className="text-2xl text-[#81C9E9] font-bold">L</span>ife<span className="text-2xl text-[#81C9E9] font-bold">C</span>are
-                </h3>
-            </div>
+        <div >
+            <NavDrawer/>
+            {/* <div className="bg-[#1d5d77] text-[#ffffff] max-w-xl min-h-screen px-9 pt-10">
+                
                 <div className="flex flex-col justify-center items-center">
                     <img src={user?.photoURL} alt="" className="rounded-full ring-4 ring-[#81C9E9] w-16 mb-3" />
                     <h4>{user?.displayName}</h4>
                 </div>
                 <ul className="font-medium pt-8 uppercase space-y-5">
-                    {/* { */}
-                    {/* // isAdmin ?
-                            // admin */}
                     <>
                         <li><NavLink to='/dashboard/adminHome'
                             className={({ isActive, isPending }) =>
@@ -57,49 +72,17 @@ const Dashboard = () => {
                             All users</NavLink>
                         </li>
                     </>
-                    {/* :
-                            // users */}
-                    {/* <>
-                                <li><NavLink to='/dashboard/userHome'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><FaHome className="text-2xl" />
-                                    User Home</NavLink>
-                                </li>
-                                <li><NavLink to='/dashboard/reservation'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><FaCalendar className="text-2xl" />
-                                    Reservation</NavLink>
-                                </li>
-                                <li><NavLink to='/dashboard/paymentHistory'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><FaWallet className="text-2xl" />
-                                    payment history </NavLink>
-                                </li>
-                                <li><NavLink to='/dashboard/cart'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><FaShoppingCart className="text-2xl" />
-                                    My Cart</NavLink>
-                                </li>
-                                <li><NavLink to='/dashboard/review'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><CgComment className="text-2xl" />
-                                    add review</NavLink>
-                                </li>
-                                <li><NavLink to='/dashboard/myBookings'
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white flex items-center gap-2" : "flex items-center gap-2"
-                                    }><FaList className="text-2xl" />
-                                    my bookings</NavLink>
-                                </li>
-                            </> */}
-                    {/*  } */}
                 </ul>
-            </div>
+            </div> */}
+
+                <IconButton variant="text" size="lg" onClick={openDrawer}>
+                    {isDrawerOpen ? (
+                        <p>Close</p>
+                    ) : (
+                        <p>Open</p>
+                    )}
+                </IconButton>
+            
             <div className="flex-1 px-14">
                 <Outlet />
             </div>
