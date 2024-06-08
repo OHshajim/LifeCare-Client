@@ -10,8 +10,7 @@ import useOrganizer from "../Hooks/useOrganizer";
 
 const Dashboard = () => {
     const { user } = useAuth()
-    const { isOrganizer } = useOrganizer()
-    // const [ isOrganizer ] = useOrganizer()
+    const [ isOrganizer ] = useOrganizer()
     console.log(isOrganizer);
     return (
         <div className="lg:flex  ">
