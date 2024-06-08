@@ -48,7 +48,7 @@ const CampDetails = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        if (!gender){
+        if (!gender) {
             return setError(true);
         }
         else {
@@ -85,11 +85,11 @@ const CampDetails = () => {
             {/* loader */}
             <div className="flex justify-center ">
                 {
-                    loading && <Loader/>
+                    loading && <Loader />
                 }
             </div>
 
-            {  !loading && <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
+            {!loading && <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
                 <div className="flex items-center justify-center w-full lg:w-1/2">
                     <img className="object-cover w-full h-full  rounded-md" src={image} alt={campName} />
                 </div>
@@ -124,8 +124,12 @@ const CampDetails = () => {
             <Dialog
                 open={open}
                 handler={handleOpen}
+                className="overflow-y-auto "
+                style={{
+                    maxHeight:'80vh'
+                }}
             >
-                <Card className="mx-auto w-full max-w-[50rem]" onSubmit={handleSubmit(onSubmit)}>
+                <Card className="mx-auto w-full " onSubmit={handleSubmit(onSubmit)}>
                     <CardBody className="flex flex-col gap-4">
                         <Typography variant="h4" color="light-blue">
                             Registration For Campaign
@@ -137,14 +141,22 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Camp Name
                                     </Typography>
-                                    <Input className="w-full fixedInfo " value={campName}
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        className="w-full   !border-t-blue-gray-200 focus:!border-t-gray-900" value={campName}
                                         {...register("campName")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Camp Fees
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={campFees}
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" value={campFees}
                                         {...register("campFees")} />
                                 </div>
                             </div>
@@ -153,14 +165,22 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Healthcare Professional Name
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={healthcareProfessionalName}
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" value={healthcareProfessionalName}
                                         {...register("healthcareProfessionalName")} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Location
                                     </Typography>
-                                    <Input className="w-full fixedInfo" value={location}
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" value={location}
                                         {...register("location")} />
                                 </div>
                             </div>
@@ -169,15 +189,23 @@ const CampDetails = () => {
                                     <Typography className="mb-2" variant="h6">
                                         Participant Name
                                     </Typography>
-                                    <Input {...register("participantName")}
-                                        className="w-full fixedInfo" value={user?.displayName} />
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        {...register("participantName")}
+                                        className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" value={user?.displayName} />
                                 </div>
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
                                         Participant Email
                                     </Typography>
-                                    <Input {...register("participantEmail")}
-                                        className="w-full fixedInfo" value={user?.email} />
+                                    <Input
+                                        labelProps={{
+                                            className: "before:content-none after:content-none",
+                                        }}
+                                        {...register("participantEmail")}
+                                        className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" value={user?.email} />
                                 </div>
                             </div>
                             <div className="flex  flex-col md:flex-row gap-5">
@@ -217,7 +245,11 @@ const CampDetails = () => {
 
                             </div>
 
-                            <Input type="submit" variant="outlined" value='Registration' className="fixedInfo" />
+                            <Input
+                                labelProps={{
+                                    className: "before:content-none after:content-none",
+                                }}
+                                type="submit" variant="outlined" value='Registration' className=" !border-t-blue-gray-200 focus:!border-t-gray-900" />
                         </form>
                     </CardBody>
                 </Card>

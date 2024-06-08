@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { BsPencilSquare } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageCamp = () => {
     const axiosSecure = useAxiosSecure()
@@ -16,6 +17,7 @@ const ManageCamp = () => {
             return res.data;
         }
     })
+    
     const handleDelete = async (id) => {
         const res = await axiosSecure.delete(`/delete-camp/${id}`)
         console.log(res);
@@ -28,6 +30,7 @@ const ManageCamp = () => {
             refetch()
         }
     }
+
     console.log(camps);
     return (
         <div>
@@ -83,9 +86,12 @@ const ManageCamp = () => {
 
                                                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                         <div className="flex items-center gap-x-6">
-                                                            <button className="text-gray-500 transition-colors duration-200  hover:text-blue-500 focus:outline-none text-xl">
-                                                                <BsPencilSquare />
-                                                            </button>
+                                                            <Link to={`/dashboard/update-camp/${camp._id}`}>
+                                                                <button
+                                                                    className="text-gray-500 transition-colors duration-200  hover:text-blue-500 focus:outline-none text-xl">
+                                                                    <BsPencilSquare />
+                                                                </button>
+                                                            </Link>
 
                                                             <button onClick={() => handleDelete(camp._id)} className="text-gray-500 transition-colors duration-200  hover:text-red-500 focus:outline-none text-xl">
                                                                 <FiDelete />
@@ -94,9 +100,6 @@ const ManageCamp = () => {
                                                     </td>
                                                 </tr>)
                                             }
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -133,6 +136,7 @@ const ManageCamp = () => {
                     </div>
                 </section>
             </div>
+
         </div>
     );
 };

@@ -9,6 +9,7 @@ import CampDetails from "../Pages/CampDetails/CampDetails";
 import Dashboard from "../Layout/Dashboard";
 import AddCamp from "../Pages/DashboardPages/Organizer/AddCamp";
 import ManageCamp from "../Pages/DashboardPages/Organizer/ManageCamp";
+import UpdateCamp from "../Pages/DashboardPages/Organizer/UpdateCamp";
 
 const Routes = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const Routes = createBrowserRouter([
             {
                 path:'/dashBoard/manageCamp',
                 element:<ManageCamp/>,
+            },
+            {
+                path:'/dashBoard/update-Camp/:id',
+                element:<UpdateCamp/>,
             },
         ]
     }
