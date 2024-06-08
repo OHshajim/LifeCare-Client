@@ -5,11 +5,13 @@ import {
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { MdOutlinePlaylistRemove } from "react-icons/md";
-// import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import NavDrawer from "./NavDrawer";
 const DashboardNav = () => {
-    const [openNav, setOpenNav] = useState(false);
     const { user } = useAuth()
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const closeDrawer = () => setIsDrawerOpen(false);
+
     return (
         <div className="px-4 lg:px-8 py-2  border ">
             <div className="flex items-center justify-between ">
@@ -18,9 +20,9 @@ const DashboardNav = () => {
                         variant="text"
                         className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent "
                         ripple={false}
-                        onClick={() => setOpenNav(!openNav)}
+                        onClick={() => setIsDrawerOpen(!isDrawerOpen)}
                     >
-                        {openNav ?
+                        {isDrawerOpen ?
                             <MdOutlinePlaylistRemove className="text-4xl" />
                             :
                             <FaList className="text-xl" />
@@ -48,8 +50,8 @@ const DashboardNav = () => {
                     }
                 </div>
             </div>
+            <NavDrawer isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
         </div>
-
     );
 };
 

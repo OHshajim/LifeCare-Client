@@ -7,6 +7,7 @@ import {
     Drawer,
     Card,
 } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 // import useAuth from "../../../Hooks/useAuth";
 // import Swal from "sweetalert2";
 const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
@@ -32,9 +33,10 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
     //         }
     //     })
     // }
+    console.log(isDrawerOpen, closeDrawer);
     return (
         <div>
-            <div className="hidden lg:flex">
+            <div className="">
                 <Drawer open={isDrawerOpen} onClose={closeDrawer}>
                     <Card
                         color="transparent"
@@ -63,9 +65,11 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
                                     />
                                 </ListItemSuffix>
                             </ListItem>
-                            <ListItem>
-                                Profile
-                            </ListItem>
+                            <Link to={'/dashboard/addCamp'}>
+                                <ListItem onClick={() => closeDrawer()}>
+                                    Profile
+                                </ListItem>
+                            </Link>
                             <ListItem>
                                 Settings
                             </ListItem>
@@ -84,5 +88,5 @@ export default NavDrawer;
 
 NavDrawer.propTypes = {
     isDrawerOpen: PropTypes.bool.isRequired,
-    closeDrawer: PropTypes.bool.isRequired
+    closeDrawer: PropTypes.func.isRequired
 };
