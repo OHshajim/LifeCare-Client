@@ -33,7 +33,7 @@ const Dashboard = () => {
                                 }><CgAdd className="text-2xl" />
                                 add Camp</NavLink>
                             </li>
-                            <li><NavLink to='/dashboard/myBookings'
+                            <li><NavLink to='/dashboard/manageCamp'
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
                                 }><FaBook className="text-2xl" />

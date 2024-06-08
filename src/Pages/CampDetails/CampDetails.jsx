@@ -89,7 +89,7 @@ const CampDetails = () => {
                 }
             </div>
 
-            {   !loading && <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
+            {  !loading && <div className="flex flex-col w-full space-y-6  lg:flex-row lg:items-center gap-10">
                 <div className="flex items-center justify-center w-full lg:w-1/2">
                     <img className="object-cover w-full h-full  rounded-md" src={image} alt={campName} />
                 </div>
@@ -109,7 +109,7 @@ const CampDetails = () => {
 
                             <p className="flex items-center gap-1 "> Date:<BsCalendarDateFill className="text-base" />
                                 {date}</p>
-                            <p className="flex items-center gap-1 ">Location: <MdAddLocation className="text-xl" />{Location}</p>
+                            <p className="flex items-center gap-1 ">Location: <MdAddLocation className="text-xl" />{location}</p>
                         </div>
                         <div className="flex justify-between items-center ">
                             <p className="font-bold">Camp Fees: ${campFees}</p>
@@ -122,25 +122,16 @@ const CampDetails = () => {
             </div>}
             {/* modal */}
             <Dialog
-                size="xl"
                 open={open}
                 handler={handleOpen}
-                className="bg-transparent shadow-none"
             >
                 <Card className="mx-auto w-full max-w-[50rem]" onSubmit={handleSubmit(onSubmit)}>
                     <CardBody className="flex flex-col gap-4">
-                        <Typography variant="h4" color="blue-gray">
+                        <Typography variant="h4" color="light-blue">
                             Registration For Campaign
                         </Typography>
-                        <Typography
-                            className="mb-3 font-normal"
-                            variant="paragraph"
-                            color="gray"
-                        >
-                            Enter your email and password to Sign In.
-                        </Typography>
 
-                        <form className="space-y-3 md:space-y-5" >
+                        <form className="space-y-3 md:space-y-5 " >
                             <div className="flex items-center flex-col md:flex-row gap-5">
                                 <div className="md:w-1/2 w-full">
                                     <Typography className="mb-2" variant="h6">
@@ -229,7 +220,6 @@ const CampDetails = () => {
                             <Input type="submit" variant="outlined" value='Registration' className="fixedInfo" />
                         </form>
                     </CardBody>
-
                 </Card>
             </Dialog>
         </div>

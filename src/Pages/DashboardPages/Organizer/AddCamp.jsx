@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import SectionTitle from "../../../Shared/SectionTitle";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AddCamp = () => {
     const axiosPublic = useAxiosPublic()
@@ -11,6 +12,7 @@ const AddCamp = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
     const onSubmit = async (data) => {
@@ -27,14 +29,23 @@ const AddCamp = () => {
                     const newCamp = {
                         campName: data.campName,
                         image: res.data.data.display_url,
-                        campFees: data.campFees,
+                        campFees: parseFloat(data.campFees),
                         date: data.date,
                         location: data.location,
                         healthcareProfessionalName: data.professionalName,
-                        participantCount: data.participantCount,
+                        participantCount: parseInt(data.participantCount),
                         description: data.description
                     }
-                    const res = await axiosSecure.post('/camps', newCamp)
+                    const result = await axiosSecure.post('/camps', newCamp)
+                    console.log(result);
+                    if (result.statusText === "OK") {
+                        Swal.fire({
+                            title: 'Successfully Added',
+                            text: `${data.campName} is successfully added!!!`,
+                            icon: "success"
+                        });
+                        reset()
+                    }
                 }
             })
     }

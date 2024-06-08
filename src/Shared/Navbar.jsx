@@ -116,11 +116,11 @@ const Nav = () => {
 
                                                 <p className="px-3 my-2">{user?.displayName}</p>
 
-                                                <MenuItem>
-                                                    <Link to='/dashboard' className="flex items-center ">
+                                                <Link to='/dashboard' className="flex items-center ">
+                                                    <MenuItem>
                                                         Dashboard
-                                                    </Link>
-                                                </MenuItem>
+                                                    </MenuItem>
+                                                </Link>
                                                 <MenuItem onClick={handleLogout} className="border text-red-600 border-red-600">
                                                     Logout
                                                 </MenuItem>
