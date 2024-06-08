@@ -33,7 +33,6 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
     //         }
     //     })
     // }
-    console.log(isDrawerOpen, closeDrawer);
     return (
         <div>
             <div className="">
