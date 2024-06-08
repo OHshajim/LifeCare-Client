@@ -2,20 +2,25 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionTitle from "../../../Shared/SectionTitle";
 
 const UpdateCamp = () => {
     const { id } = useParams()
-    console.log(id);
-    const axiosPublic = useAxiosPublic()
-    // const { name, category, price, recipe, _id } = item;
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+    const image_hosting_key = import.meta.env.VITE_PHOTO_HOSTING_KEY;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
     const { data: camp = {} } = useQuery({
-        queryKey: ['camp'],
+        queryKey: ['camp', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/camp/${id}`)
             return res.data;
         }
     })
-    console.log(camp);
+    // console.log(camp);
     const { campFees, campName, date, description, healthcareProfessionalName, image, location, participantCount } = camp;
 
     const {
@@ -25,20 +30,67 @@ const UpdateCamp = () => {
     } = useForm()
     const onSubmit = async (data) => {
         console.log(data);
-        // const res = await axiosSecure.patch(`/update-camp/${id}`)
-        // if (res.data.deletedCount) {
-        //     Swal.fire({
-        //         title: 'Successfully Deleted',
-        //         text: 'Camp is successfully deleted !!!',
-        //         icon: "success"
-        //     });
-        //     refetch()
-        // }
+        const imageFile = { image: data.photo[0] }
+
+        // if new image add
+        if (imageFile.image) {
+            await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+                .then(async (res) => {
+                    console.log(res);
+                    if (res.data.success) {
+                        const campUpdate = {
+                            campName: data.campName,
+                            image: res.data.data.display_url,
+                            campFees: parseFloat(data.campFees),
+                            date: data.date,
+                            location: data.location,
+                            healthcareProfessionalName: data.professionalName,
+                            participantCount: parseInt(data.participantCount),
+                            description: data.description
+                        }
+                        const result = await axiosSecure.patch(`/update-camp/${id}`, campUpdate)
+                        console.log(result);
+                        if (result.data) {
+                            Swal.fire({
+                                title: 'Successfully Added',
+                                text: `${data.campName} is successfully added!!!`,
+                                icon: "success"
+                            });
+                        }
+                    }
+                })
+        }
+        // if new image not add
+        else {
+            const updatedCamp = {
+                campName: data.campName,
+                image: image,
+                campFees: parseFloat(data.campFees),
+                date: data.date,
+                location: data.location,
+                healthcareProfessionalName: data.professionalName,
+                participantCount: parseInt(data.participantCount),
+                description: data.description
+            }
+            const res = await axiosSecure.patch(`/update-camp/${id}`, updatedCamp)
+            console.log(res);
+            if (res.data) {
+                Swal.fire({
+                    title: 'Successfully Deleted',
+                    text: 'Camp is successfully deleted !!!',
+                    icon: "success"
+                });
+            }
+        }
     }
     return (
-        <div>
-            <h3 className="text-3xl uppercase font-bold text-center my-12">Update Item</h3>
-            <div className="mx-20 p-10 mb-20 border border-[#828282]">
+        <div className="my-20">
+            <SectionTitle heading="Update Camp" subHeading="updating"/>
+            <div className="">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-4" >
                         <div className='md:flex w-full gap-5 space-y-4 md:space-y-0 '>
@@ -96,15 +148,13 @@ const UpdateCamp = () => {
 
                         <div >
                             <label className="font-semibold " >Camp Photo</label> <br />
-                            <input {...register("photo", { required: true })} defaultValue={image}
+                            <input {...register("photo")}
                                 type='file' className='mt-2' />
-                            {errors.photo &&
-                                <span className="text-red-600 font-semibold text-sm">Camp Photo is required***</span>}
                         </div>
                     </div>
 
                     <div className="flex justify-end mt-6" >
-                        <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add Camp</button>
+                        <button type="submit" className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add Camp</button>
                     </div>
                 </form>
             </div>
