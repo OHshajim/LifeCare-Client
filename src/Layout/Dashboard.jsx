@@ -13,9 +13,9 @@ const Dashboard = () => {
     const [ isOrganizer ] = useOrganizer()
     console.log(isOrganizer);
     return (
-        <div className="lg:flex  ">
-            <div className="lg:flex hidden">
-                <div className="bg-[#247696] text-[#ffffff] max-w-xl min-h-screen px-9 pt-10 ">
+        <div className="lg:flex  min-h-screen">
+            <div className="lg:flex hidden ">
+                <div className="bg-[#247696] text-[#ffffff] max-w-xl px-9 pt-10 ">
 
                     <div className="flex flex-col justify-center items-center">
                         <img src={user?.photoURL} alt="" className="rounded-full ring-4 ring-[#81C9E9] w-16 mb-3" />
@@ -90,7 +90,7 @@ const Dashboard = () => {
             <div className="lg:hidden">
                 <DashboardNav />
             </div>
-            <div className="flex-1 px-5 sm:px-8 xl:px-14 lg:px-9">
+            <div className="flex-1 px-5 sm:px-8 xl:px-14 lg:px-9 ">
                 <Outlet />
             </div>
         </div>

@@ -67,7 +67,7 @@ const CheckoutForm = ({ camp }) => {
                 setTransactionID(paymentIntent.id)
                 const payment = {
                     email: user.email,
-                    price: campFees,
+                    campFees: campFees,
                     transactionID: paymentIntent.id,
                     date: new Date(),
                     name: user.displayName,

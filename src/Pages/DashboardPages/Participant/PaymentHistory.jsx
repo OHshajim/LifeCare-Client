@@ -1,29 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-// import { Link } from "react-router-dom";
 import SectionTitle from "../../../Shared/SectionTitle";
-import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 
-
-const RegisteredCamps = () => {
+const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const { data: camps = [] } = useQuery({
         queryKey: ['camps', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/registeredCamps/${user?.email}`)
+            const res = await axiosSecure.get(`/paidCamps/${user?.email}`);
             console.log(res);
             return res.data;
         }
     })
-
-
     console.log(camps);
     return (
         <div>
-            <SectionTitle subHeading="manage camps " heading="manage camps" />
+            <SectionTitle subHeading="manage camps " heading="Payment History" />
             <div>
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">
@@ -47,18 +41,12 @@ const RegisteredCamps = () => {
                                                 </th>
 
                                                 <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                                    Participant Name
-                                                </th>
-
-                                                <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                                     Payment Status
                                                 </th>
                                                 <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                                    Cancellation
+                                                    Confirmation Status
                                                 </th>
-                                                <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                                    Feedback
-                                                </th>
+
                                             </tr>
                                         </thead>
                                         <tbody className="bg-white divide-y divide-gray-200  ">
@@ -71,33 +59,12 @@ const RegisteredCamps = () => {
                                                         ${camp.campFees}
                                                     </td>
                                                     <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                        {camp.participantName}
+                                                        Paid
                                                     </td>
+                                                    
                                                     <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                        {
-                                                            camp.paymentStatus ?
-                                                                <Button disabled>
-                                                                    { camp.paymentStatus}
-                                                                </Button>
-                                                                : <Link to={`/dashboard/payment/${camp._id}`}>
-                                                                    <Button>
-                                                                        {'Pay'}
-                                                                    </Button>
-                                                                </Link>
-                                                        }
+                                                    {camp.status}
                                                     </td>
-                                                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                        <Button>
-                                                            Cancel
-                                                        </Button>
-                                                    </td>
-                                                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                        <Button>
-                                                            Feedback||N/A
-                                                        </Button>
-                                                    </td>
-
-
                                                 </tr>)
                                             }
                                         </tbody>
@@ -141,4 +108,4 @@ const RegisteredCamps = () => {
     );
 };
 
-export default RegisteredCamps;
+export default PaymentHistory;
