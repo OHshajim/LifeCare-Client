@@ -11,6 +11,7 @@ import AddCamp from "../Pages/DashboardPages/Organizer/AddCamp";
 import ManageCamp from "../Pages/DashboardPages/Organizer/ManageCamp";
 import UpdateCamp from "../Pages/DashboardPages/Organizer/UpdateCamp";
 import RegisteredCamps from "../Pages/DashboardPages/Participant/RegisteredCamps";
+import Payment from "../Pages/DashboardPages/Participant/Payment/Payment";
 
 const Routes = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/availableCamps',
-                element: <AvailableCamps/>
+                element: <AvailableCamps />
             },
             {
                 path: '/camp/:id',
@@ -40,27 +41,32 @@ const Routes = createBrowserRouter([
         ]
     },
     {
-        path:'dashBoard',
-        element:<Dashboard/>,
-        children:[
+        path: 'dashBoard',
+        element: <Dashboard />,
+        children: [
             // Organizer
             {
-                path:'/dashBoard/addCamp',
-                element:<AddCamp/>,
+                path: '/dashBoard/addCamp',
+                element: <AddCamp />,
             },
             {
-                path:'/dashBoard/manageCamp',
-                element:<ManageCamp/>,
+                path: '/dashBoard/manageCamp',
+                element: <ManageCamp />,
             },
             {
-                path:'/dashBoard/update-Camp/:id',
-                element:<UpdateCamp/>,
+                path: '/dashBoard/update-Camp/:id',
+                element: <UpdateCamp />,
             },
 
             //Participant Users
             {
-                path:'/dashBoard/registeredCamps',
-                element:<RegisteredCamps/>,
+                path: '/dashBoard/registeredCamps',
+                element: <RegisteredCamps />,
+            },
+            // payment
+            {
+                path: '/dashBoard/payment/:id',
+                element: <Payment />,
             },
         ]
     }

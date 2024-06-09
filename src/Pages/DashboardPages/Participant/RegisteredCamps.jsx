@@ -4,6 +4,8 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 // import { Link } from "react-router-dom";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+
 
 const RegisteredCamps = () => {
     const axiosSecure = useAxiosSecure();
@@ -16,6 +18,8 @@ const RegisteredCamps = () => {
             return res.data;
         }
     })
+
+
     console.log(camps);
     return (
         <div>
@@ -70,9 +74,11 @@ const RegisteredCamps = () => {
                                                         {camp.participantName}
                                                     </td>
                                                     <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                        <Button>
-                                                            {camp.paymentStatus || 'Pay'}
-                                                        </Button>
+                                                        <Link to={`/dashboard/payment/${camp._id}`}>
+                                                            <Button>
+                                                                {camp.paymentStatus || 'Pay'}
+                                                            </Button>
+                                                        </Link>
                                                     </td>
                                                     <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                                         <Button>
