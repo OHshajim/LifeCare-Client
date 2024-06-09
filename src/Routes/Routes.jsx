@@ -13,6 +13,7 @@ import UpdateCamp from "../Pages/DashboardPages/Organizer/UpdateCamp";
 import RegisteredCamps from "../Pages/DashboardPages/Participant/RegisteredCamps";
 import Payment from "../Pages/DashboardPages/Participant/Payment/Payment";
 import PaymentHistory from "../Pages/DashboardPages/Participant/PaymentHistory";
+import Profile from "../Pages/DashboardPages/Participant/Profile";
 
 const Routes = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ const Routes = createBrowserRouter([
             },
 
             //Participant Users
+            {
+                path: '/dashBoard/userProfile',
+                element: <Profile />,
+            },
             {
                 path: '/dashBoard/registeredCamps',
                 element: <RegisteredCamps />,

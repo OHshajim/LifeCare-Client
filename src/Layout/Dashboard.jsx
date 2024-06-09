@@ -64,7 +64,7 @@ const Dashboard = () => {
                                         }><FaHome className="text-2xl" />
                                         Analytics</NavLink>
                                     </li>
-                                    <li><NavLink to='/dashboard/profile'
+                                    <li><NavLink to='/dashboard/userProfile'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
                                         }><FaHome className="text-2xl" />

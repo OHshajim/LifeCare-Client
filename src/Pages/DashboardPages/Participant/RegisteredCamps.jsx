@@ -222,7 +222,7 @@ const RegisteredCamps = () => {
                                                     }}
                                                     {...register("feedback", { required: true })}
                                                     className="w-full  !border-t-blue-gray-200 focus:!border-t-gray-900" />
-                                                {errors.feedback && <span className="text-red-600 font-semibold">Age is required***</span>}
+                                                {errors.feedback && <span className="text-red-600 font-semibold">this field is required***</span>}
                                             </div>
                                         </div>
 
