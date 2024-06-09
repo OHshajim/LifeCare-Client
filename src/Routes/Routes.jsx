@@ -15,6 +15,7 @@ import Payment from "../Pages/DashboardPages/Participant/Payment/Payment";
 import PaymentHistory from "../Pages/DashboardPages/Participant/PaymentHistory";
 import Profile from "../Pages/DashboardPages/Participant/Profile";
 import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
+import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
 
 const Routes = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/dashBoard/update-Camp/:id',
                 element: <UpdateCamp />,
+            },
+            {
+                path: '/dashBoard/manageRegisters',
+                element: <ManageRegisters />,
             },
             {
                 path: '/dashBoard/userManagement',
