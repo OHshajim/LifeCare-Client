@@ -1,20 +1,22 @@
 import { CgAdd } from "react-icons/cg";
-import { FaHome } from "react-icons/fa";
-import { FaBook } from "react-icons/fa6";
+import { FaHistory, FaHome } from "react-icons/fa";
+import { FaBook, FaListUl } from "react-icons/fa6";
 import { HiUserGroup } from "react-icons/hi";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 import DashboardNav from "../Pages/DashboardPages/HomePage/DashboardNav";
 import useOrganizer from "../Hooks/useOrganizer";
+import { BiUser } from "react-icons/bi";
+import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 
 const Dashboard = () => {
     const { user } = useAuth()
     const [isOrganizer] = useOrganizer()
     // console.log(isOrganizer);
     return (
-        <div className="lg:flex  min-h-screen">
-            <div className="lg:flex hidden ">
+        <div className="lg:flex  min-h-screen ">
+            <div className="lg:flex hidden min-w-[400px]">
                 <div className="bg-[#247696] text-[#ffffff] max-w-xl px-9 pt-10 ">
 
                     <div className="flex flex-col justify-center items-center">
@@ -25,10 +27,10 @@ const Dashboard = () => {
                         {
                             isOrganizer ?
                                 <>
-                                    <li><NavLink to='/dashboard/organizerProfile'
+                                    <li><NavLink to='/dashboard/profile'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaHome className="text-2xl" />
+                                        }><BiUser className="text-2xl" />
                                         Profile</NavLink>
                                     </li>
                                     <li><NavLink to='/dashboard/addCamp'
@@ -46,7 +48,7 @@ const Dashboard = () => {
                                     <li><NavLink to='/dashboard/manageRegisters'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaBook className="text-2xl" />
+                                        }><FaListUl className="text-2xl" />
                                         Manage Registered Camps</NavLink>
                                     </li>
                                     <li><NavLink to='/dashboard/userManagement'
@@ -61,25 +63,25 @@ const Dashboard = () => {
                                     <li><NavLink to='/dashboard/analytics'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaHome className="text-2xl" />
+                                        }><TbDeviceDesktopAnalytics  className="text-2xl" />
                                         Analytics</NavLink>
                                     </li>
-                                    <li><NavLink to='/dashboard/userProfile'
+                                    <li><NavLink to='/dashboard/profile'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaHome className="text-2xl" />
+                                        }><BiUser className="text-2xl" />
                                         Profile</NavLink>
                                     </li>
                                     <li><NavLink to='/dashboard/registeredCamps'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaHome className="text-2xl" />
+                                        }><FaListUl className="text-2xl" />
                                         Registered Camps</NavLink>
                                     </li>
                                     <li><NavLink to='/dashboard/paymentHistory'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
-                                        }><FaHome className="text-2xl" />
+                                        }><FaHistory className="text-2xl" />
                                         Payment History</NavLink>
                                     </li>
                                 </>
@@ -90,6 +92,12 @@ const Dashboard = () => {
                                 isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
                             }><FaHome className="text-2xl" />
                             home</NavLink>
+                        </li>
+                        <li><NavLink to='/availableCamps'
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
+                            }><FaListUl className="text-2xl" />
+                            Available Camps</NavLink>
                         </li>
                     </ul>
                 </div>

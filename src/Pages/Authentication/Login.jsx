@@ -39,23 +39,18 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center min-h-screen"
-            style={{
-                // backgroundImage: `url(${loginBG})`
-            }}>
+        <div className="flex justify-center items-center min-h-screen">
 
 
             {/* <Helmet>
                 <title>Bistro Boss || Login</title>
             </Helmet> */}
 
-            <div className="flex my-20 shadow-2xl w-full max-w-lg mx-auto overflow-hidden rounded-lg lg:max-w-screen-xl text-black"
-            // style={{
-            //     backgroundImage: `url(${''})`
-            // }}
+            <div className="flex my-20 shadow-2xl w-full max-w-lg mx-auto overflow-hidden rounded-lg lg:max-w-screen-xl bg-white text-black"
+            
             >
                 <div className="hidden bg-cover lg:block lg:w-1/2">
-                    <img src={''} alt="" />
+                    <img src={'https://i.ibb.co/qD68R9t/6310507.jpg'} alt="" className="w-full"/>
                 </div>
 
                 <div className="w-full bg-transparent px-6 py-8 md:px-8 lg:w-1/2">

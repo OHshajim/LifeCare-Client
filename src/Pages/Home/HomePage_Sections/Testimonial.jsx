@@ -41,7 +41,7 @@ const Testimonial = () => {
             }
 
             <Swiper
-                slidesPerView={1.7}
+                slidesPerView={1.3}
                 spaceBetween={40}
                 centeredSlides={true}
                 pagination={{

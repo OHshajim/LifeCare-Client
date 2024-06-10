@@ -91,7 +91,7 @@ const AvailableCamps = () => {
                 }
 
                 {/* cart */}
-                <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${isThree ? '!grid-cols-3' : ''}`}>
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${isThree ? 'lg:grid-cols-3' : ''}`}>
                     {
                         camps.map(camp => <CampCards key={camp._id} camp={camp} />)
                     }

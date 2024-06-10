@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Button, Card, CardBody, Dialog, Input, Typography } from "@material-tailwind/react";
 import { LuPenSquare } from "react-icons/lu";
-import SectionTitle from "../../../Shared/SectionTitle";
+import SectionTitle from "../Shared/SectionTitle";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const OrganizerProfile = () => {
+const Profile = () => {
     const { user: currentUser, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
@@ -59,7 +59,7 @@ const OrganizerProfile = () => {
 
                         <div className=" flex sm:flex-row flex-col justify-between w-full  space-y-2">
                             <div>
-                                <p className="text-blue-100 uppercase">{user?.role}</p>
+                                <p className="text-blue-100 uppercase">{user?.role ||'Participant'}</p>
                                 <div className="flex mx-auto mb-6">
                                     <span className="inline-block w-40 h-1 bg-white rounded-full"></span>
                                     <span className="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
@@ -162,4 +162,4 @@ const OrganizerProfile = () => {
     );
 };
 
-export default OrganizerProfile;
+export default Profile;

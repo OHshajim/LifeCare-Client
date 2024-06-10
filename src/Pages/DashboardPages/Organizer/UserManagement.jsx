@@ -40,7 +40,7 @@ const UserManagement = () => {
     }
 
 return (
-    <div>
+    <div className="min-h-screen">
         <SectionTitle subHeading="manage users " heading="manage users" />
         <div>
             <section className="container px-4 mx-auto">

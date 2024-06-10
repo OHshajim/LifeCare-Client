@@ -5,8 +5,8 @@ const Success = () => {
         <div className="w-full flex flex-col-reverse lg:flex-row  flex-cols gap-10">
             <div className="lg:w-1/2 lg:px-0 px-5">
 
-                <h3 className="text-3xl font-bold lg:mt-10">Finest Client Care & Amenities Service</h3>
-                <p>At the heart of our Camp Management System is a commitment to providing the finest client care and amenities service. This feature ensures that all participants of the medical camps receive top-notch care and have access to a range of amenities designed to enhance their experience.</p>
+                <h3 className="md:text-3xl sm:text-2xl text-xl font-bold lg:mt-10">Finest Client Care & Amenities Service</h3>
+                <p className="text-gray-800">At the heart of our Camp Management System is a commitment to providing the finest client care and amenities service. This feature ensures that all participants of the medical camps receive top-notch care and have access to a range of amenities designed to enhance their experience.</p>
 
                 <div className="space-y-5 mt-7">
                     <div>

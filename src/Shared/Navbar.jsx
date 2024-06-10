@@ -116,7 +116,7 @@ const Nav = () => {
 
                                                 <p className="px-3 my-2">{user?.displayName}</p>
 
-                                                <Link to='/dashboard' className="flex items-center ">
+                                                <Link to='/dashboard/profile' className="flex items-center ">
                                                     <MenuItem>
                                                         Dashboard
                                                     </MenuItem>

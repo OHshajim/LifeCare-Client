@@ -2,37 +2,14 @@ import PropTypes from 'prop-types';
 import {
     List,
     ListItem,
-    ListItemSuffix,
-    Chip,
     Drawer,
     Card,
 } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
-// import useAuth from "../../../Hooks/useAuth";
-// import Swal from "sweetalert2";
+import { NavLink } from 'react-router-dom';
+import useOrganizer from '../../../Hooks/useOrganizer';
+
 const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
-    // const { user, Logout } = useAuth()
-    // const handleLogout = () => {
-    //     Swal.fire({
-    //         title: "Log out now?",
-    //         text: " Are you sure you want to log out?",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, Logout"
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             Logout();
-    //             // sweetAlert
-    //             Swal.fire({
-    //                 title: "Successfully Logout",
-    //                 text: "You are now logged out. Stay healthy!",
-    //                 icon: "success",
-    //             });
-    //         }
-    //     })
-    // }
+    const [isOrganizer] = useOrganizer();
     return (
         <div>
             <div className="">
@@ -50,31 +27,72 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
                         </div>
 
                         <List>
-                            <hr className="my-2 border-blue-gray-50" />
-                            <ListItem>
+                            {
+                                isOrganizer ?
 
-                                Inbox
-                                <ListItemSuffix>
-                                    <Chip
-                                        value="14"
-                                        size="sm"
-                                        variant="ghost"
-                                        color="blue-gray"
-                                        className="rounded-full"
-                                    />
-                                </ListItemSuffix>
-                            </ListItem>
-                            <Link to={'/dashboard/addCamp'}>
+                                    <>
+                                        <NavLink to={'/dashboard/profile'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Profile
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/addCamp'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                add Camp
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/manageCamp'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Manage Camp
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/manageRegisters'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Manage Registered Camps
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/userManagement'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Participant Management
+                                            </ListItem>
+                                        </NavLink>
+                                    </>
+                                    :
+                                    <>
+                                        <NavLink to={'/dashboard/analytics'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Analytics
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/profile'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Profile
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/registeredCamps'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Registered Camps
+                                            </ListItem>
+                                        </NavLink>
+                                        <NavLink to={'/dashboard/paymentHistory'}>
+                                            <ListItem onClick={() => closeDrawer()}>
+                                                Payment History
+                                            </ListItem>
+                                        </NavLink>
+                                    </>
+
+                            }
+                            <hr className="my-2 border-blue-gray-50" />
+                            <NavLink to={'/'}>
                                 <ListItem onClick={() => closeDrawer()}>
-                                    Profile
+                                    home
                                 </ListItem>
-                            </Link>
-                            <ListItem>
-                                Settings
-                            </ListItem>
-                            <ListItem>
-                                Log Out
-                            </ListItem>
+                            </NavLink>
+                            <NavLink to={'/'}>
+                                <ListItem onClick={() => closeDrawer()}>
+                                    Available Camps
+                                </ListItem>
+                            </NavLink>
                         </List>
                     </Card>
                 </Drawer>

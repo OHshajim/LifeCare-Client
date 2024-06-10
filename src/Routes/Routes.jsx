@@ -13,11 +13,10 @@ import UpdateCamp from "../Pages/DashboardPages/Organizer/UpdateCamp";
 import RegisteredCamps from "../Pages/DashboardPages/Participant/RegisteredCamps";
 import Payment from "../Pages/DashboardPages/Participant/Payment/Payment";
 import PaymentHistory from "../Pages/DashboardPages/Participant/PaymentHistory";
-import Profile from "../Pages/DashboardPages/Participant/Profile";
 import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
 import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
-import OrganizerProfile from "../Pages/DashboardPages/Organizer/OrganizerProfile";
 import Analytics from "../Pages/DashboardPages/Participant/Analytics";
+import Profile from "./Profile";
 
 const Routes = createBrowserRouter([
     {
@@ -50,11 +49,11 @@ const Routes = createBrowserRouter([
         path: 'dashBoard',
         element: <Dashboard />,
         children: [
-            // Organizer
             {
-                path: '/dashBoard/organizerProfile',
-                element: <OrganizerProfile />,
+                path: '/dashBoard/profile',
+                element: <Profile />,
             },
+            // Organizer
             {
                 path: '/dashBoard/addCamp',
                 element: <AddCamp />,
@@ -79,11 +78,7 @@ const Routes = createBrowserRouter([
             //Participant Users
             {
                 path: '/dashBoard/Analytics',
-                element: <Analytics/>,
-            },
-            {
-                path: '/dashBoard/userProfile',
-                element: <Profile />,
+                element: <Analytics />,
             },
             {
                 path: '/dashBoard/registeredCamps',
