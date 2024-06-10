@@ -16,7 +16,7 @@ const Dashboard = () => {
     // console.log(isOrganizer);
     return (
         <div className="lg:flex  min-h-screen ">
-            <div className="lg:flex hidden min-w-[400px]">
+            <div className="lg:flex hidden  ">
                 <div className="bg-[#247696] text-[#ffffff] max-w-xl px-9 pt-10 ">
 
                     <div className="flex flex-col justify-center items-center">
@@ -105,7 +105,7 @@ const Dashboard = () => {
             <div className="lg:hidden">
                 <DashboardNav />
             </div>
-            <div className="flex-1 px-5 sm:px-8 xl:px-14 lg:px-9 ">
+            <div className="flex-1 px-5 sm:px-8 xl:px-14 lg:px-9 overflow-auto">
                 <Outlet />
             </div>
         </div>

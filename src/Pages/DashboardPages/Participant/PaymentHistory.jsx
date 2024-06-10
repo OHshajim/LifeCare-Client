@@ -16,8 +16,8 @@ const PaymentHistory = () => {
     })
     console.log(camps);
     return (
-        <div>
-            <SectionTitle subHeading="manage camps " heading="Payment History" />
+        <div >
+             <SectionTitle subHeading="manage camps " heading="Payment History" />
             <div>
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">
@@ -29,7 +29,7 @@ const PaymentHistory = () => {
                         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                 <div className="overflow-hidden border border-gray-200  md:rounded-lg">
-                                    <table className="min-w-full divide-y divide-gray-200 ">
+                                    <table className="min-w-full divide-y divide-gray-200">
                                         <thead className="bg-gray-50 ">
                                             <tr>
                                                 <th className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 ">

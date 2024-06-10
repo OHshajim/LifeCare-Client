@@ -27,7 +27,7 @@ const ManageRegisters = () => {
         }
     }
     return (
-        <div>
+        <div className="mb-10">
             <div>
                 <SectionTitle subHeading="manage registers camps " heading="manage registers camps" />
                 <div>
