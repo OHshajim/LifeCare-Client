@@ -1,4 +1,7 @@
 import { Typography } from "@material-tailwind/react";
+import { BsInstagram } from "react-icons/bs";
+import { FaFacebook } from "react-icons/fa";
+import { LiaLinkedin } from "react-icons/lia";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -12,7 +15,7 @@ const Footer = () => {
                             LifeCare
                         </h3>
                     </div>
-                    <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+                    <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
                         <li>
                             <Link
                                 to="/"
@@ -51,6 +54,18 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
+                <div className="flex gap-3 text-3xl justify-center text-white mt-4">
+                    <div className="p-2 rounded-full bg-black">
+                        <FaFacebook />
+                    </div>
+                    <div className="p-2 rounded-full bg-black">
+                        <BsInstagram />
+                    </div>
+                    <div className="p-2 rounded-full bg-black">
+                        <LiaLinkedin />
+                    </div>
+                </div>
+                <p className="text-center text-sm my-2">Join Us</p>
                 <hr className="my-8 border-blue-gray-50" />
                 <Typography color="blue-gray" className="text-center font-normal">
                     &copy; 2023 LifeCare
