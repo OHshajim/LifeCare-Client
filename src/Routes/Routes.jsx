@@ -17,11 +17,13 @@ import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
 import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
 import Analytics from "../Pages/DashboardPages/Participant/Analytics";
 import Profile from "./Profile";
+import NotFound from "../Pages/404/NotFound";
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement:<NotFound/>,
         children: [
             {
                 path: '/',
@@ -48,6 +50,7 @@ const Routes = createBrowserRouter([
     {
         path: 'dashBoard',
         element: <Dashboard />,
+        errorElement:<NotFound/>,
         children: [
             {
                 path: '/dashBoard/profile',
