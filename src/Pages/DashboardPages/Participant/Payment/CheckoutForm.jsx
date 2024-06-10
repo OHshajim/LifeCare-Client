@@ -15,15 +15,19 @@ const CheckoutForm = ({ camp }) => {
     const [transactionID, setTransactionID] = useState('')
     const [error, setError] = useState('')
     const { user } = useAuth()
-    const { campFees ,campName ,_id } = camp;
+    const { campFees, campName, _id } = camp;
     const navigate = useNavigate()
     useEffect(() => {
+        if (!campFees) {
+            return;
+        }
         axiosSecure.post("/create-payment-intent", { fees: campFees })
             .then((res) => {
-                console.log(res.data.clientSecret);
+                console.log(res);
                 setClientSecret(res.data.clientSecret);
             });
     }, [axiosSecure, campFees]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +53,7 @@ const CheckoutForm = ({ camp }) => {
         }
 
         // confirm payment 
-        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret,{
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {

@@ -175,9 +175,8 @@ const RegisteredCamps = () => {
                                                                 <Button onClick={handleOpen}>
                                                                     Feedback
                                                                 </Button>
-                                                                : <Button disabled>
-                                                                    N/A
-                                                                </Button>
+                                                                :
+                                                                " N/A"
                                                         }
                                                     </td>
 

@@ -17,6 +17,7 @@ import Profile from "../Pages/DashboardPages/Participant/Profile";
 import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
 import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
 import OrganizerProfile from "../Pages/DashboardPages/Organizer/OrganizerProfile";
+import Analytics from "../Pages/DashboardPages/Participant/Analytics";
 
 const Routes = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ const Routes = createBrowserRouter([
             },
 
             //Participant Users
+            {
+                path: '/dashBoard/Analytics',
+                element: <Analytics/>,
+            },
             {
                 path: '/dashBoard/userProfile',
                 element: <Profile />,

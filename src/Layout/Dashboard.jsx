@@ -10,7 +10,7 @@ import useOrganizer from "../Hooks/useOrganizer";
 
 const Dashboard = () => {
     const { user } = useAuth()
-    const [ isOrganizer ] = useOrganizer()
+    const [isOrganizer] = useOrganizer()
     // console.log(isOrganizer);
     return (
         <div className="lg:flex  min-h-screen">
@@ -84,6 +84,13 @@ const Dashboard = () => {
                                     </li>
                                 </>
                         }
+                        <hr />
+                        <li><NavLink to='/'
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
+                            }><FaHome className="text-2xl" />
+                            home</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
