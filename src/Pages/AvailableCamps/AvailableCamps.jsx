@@ -45,7 +45,7 @@ const AvailableCamps = () => {
         <div>
             <CampBanner />
             <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10">
-                <SectionTitle subHeading={'What Our Users Say'} heading={"Testimonials"} />
+                <SectionTitle subHeading={'join with us'} heading={"Available Camps"} />
 
                 {/* search part */}
                 <div className="w-full max-w-2xl mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">

@@ -18,12 +18,13 @@ import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
 import Analytics from "../Pages/DashboardPages/Participant/Analytics";
 import Profile from "./Profile";
 import NotFound from "../Pages/404/NotFound";
+import OrganizerRoute from "./OrganizerRoute";
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
-        errorElement:<NotFound/>,
+        errorElement: <NotFound />,
         children: [
             {
                 path: '/',
@@ -49,52 +50,52 @@ const Routes = createBrowserRouter([
     },
     {
         path: 'dashBoard',
-        element: <Dashboard />,
-        errorElement:<NotFound/>,
+        element: <PrivetRoute><Dashboard /></PrivetRoute>,
+        errorElement: <NotFound />,
         children: [
             {
                 path: '/dashBoard/profile',
-                element: <Profile />,
+                element: <PrivetRoute><Profile /></PrivetRoute>,
             },
             // Organizer
             {
                 path: '/dashBoard/addCamp',
-                element: <AddCamp />,
+                element: <OrganizerRoute><AddCamp /></OrganizerRoute>,
             },
             {
                 path: '/dashBoard/manageCamp',
-                element: <ManageCamp />,
+                element: <OrganizerRoute><ManageCamp /></OrganizerRoute>,
             },
             {
                 path: '/dashBoard/update-Camp/:id',
-                element: <UpdateCamp />,
+                element: <OrganizerRoute><UpdateCamp /></OrganizerRoute>,
             },
             {
                 path: '/dashBoard/manageRegisters',
-                element: <ManageRegisters />,
+                element: <OrganizerRoute><ManageRegisters /></OrganizerRoute>,
             },
             {
                 path: '/dashBoard/userManagement',
-                element: <UserManagement />,
+                element: <OrganizerRoute><UserManagement /></OrganizerRoute>,
             },
 
             //Participant Users
             {
                 path: '/dashBoard/Analytics',
-                element: <Analytics />,
+                element: <PrivetRoute><Analytics /></PrivetRoute>,
             },
             {
                 path: '/dashBoard/registeredCamps',
-                element: <RegisteredCamps />,
+                element: <PrivetRoute><RegisteredCamps /></PrivetRoute>,
             },
             {
                 path: '/dashBoard/paymentHistory',
-                element: <PaymentHistory />,
+                element: <PrivetRoute><PaymentHistory /></PrivetRoute>,
             },
             // payment
             {
                 path: '/dashBoard/payment/:id',
-                element: <Payment />,
+                element: <PrivetRoute><Payment /></PrivetRoute>,
             },
         ]
     }
