@@ -6,18 +6,22 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { BsPencilSquare } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const ManageCamp = () => {
+    const [search, setSearch] = useState('')
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     const { data: camps = [], refetch } = useQuery({
-        queryKey: ['camps'],
+        queryKey: ['camps',search],
         queryFn: async () => {
-            const res = await axiosPublic.get('/allCamps')
+            const res = await axiosPublic.get(`/allCamps?search=${search}`)
             return res.data;
         }
     })
-    
+
     const handleDelete = async (id) => {
         const res = await axiosSecure.delete(`/delete-camp/${id}`)
         console.log(res);
@@ -30,7 +34,20 @@ const ManageCamp = () => {
             refetch()
         }
     }
+    const {
+        register,
+        handleSubmit,
+    } = useForm()
 
+    const handleSearch = async (data) => {
+        setSearch(data.search);
+        if (search === '') {
+            refetch()
+            return;
+        }
+        console.log(data);
+        return await refetch();
+    }
     // console.log(camps);
     return (
         <div className="my-20 ">
@@ -42,6 +59,15 @@ const ManageCamp = () => {
                         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  ">{camps.length} Camps</span>
                     </div>
 
+                    <div className="my-5 w-full max-w-2xl mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
+                        <form className="flex " onSubmit={handleSubmit(handleSearch)}>
+                            <input {...register('search')} type="text" placeholder="Search" className="flex-1 h-10 px-4 max-w-xl pr-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none  focus:outline-none focus:placeholder-transparent focus:ring-0" />
+
+                            <Button type="submit" className="h-10 px-3 sm:px-5 py-2 m-1 text-white transition-colors duration-300 transform bg-blue-500 rounded-full hover:bg-blue-400 focus:outline-none focus:bg-blue-400 c">
+                                Search
+                            </Button>
+                        </form>
+                    </div>
                     <div className="flex flex-col mt-6">
                         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
