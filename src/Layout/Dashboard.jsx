@@ -11,7 +11,7 @@ import useOrganizer from "../Hooks/useOrganizer";
 const Dashboard = () => {
     const { user } = useAuth()
     const [ isOrganizer ] = useOrganizer()
-    console.log(isOrganizer);
+    // console.log(isOrganizer);
     return (
         <div className="lg:flex  min-h-screen">
             <div className="lg:flex hidden ">
@@ -25,7 +25,7 @@ const Dashboard = () => {
                         {
                             isOrganizer ?
                                 <>
-                                    <li><NavLink to='/dashboard/adminHome'
+                                    <li><NavLink to='/dashboard/organizerProfile'
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#81C9E9] flex items-center gap-2" : "flex items-center gap-2"
                                         }><FaHome className="text-2xl" />

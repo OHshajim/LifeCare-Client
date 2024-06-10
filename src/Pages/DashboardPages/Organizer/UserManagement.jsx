@@ -13,10 +13,10 @@ const UserManagement = () => {
             return res.data;
         }
     })
-    console.log(users);
+    // console.log(users);
     const handleUpdate = async (id) => {
         const res = await axiosSecure.patch(`/update-user/${id}`)
-        console.log(res);
+        // console.log(res);
         if (res.data) {
             Swal.fire({
                 title: 'Successfully Deleted',

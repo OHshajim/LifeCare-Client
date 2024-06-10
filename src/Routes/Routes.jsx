@@ -16,6 +16,7 @@ import PaymentHistory from "../Pages/DashboardPages/Participant/PaymentHistory";
 import Profile from "../Pages/DashboardPages/Participant/Profile";
 import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
 import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
+import OrganizerProfile from "../Pages/DashboardPages/Organizer/OrganizerProfile";
 
 const Routes = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const Routes = createBrowserRouter([
         element: <Dashboard />,
         children: [
             // Organizer
+            {
+                path: '/dashBoard/organizerProfile',
+                element: <OrganizerProfile />,
+            },
             {
                 path: '/dashBoard/addCamp',
                 element: <AddCamp />,

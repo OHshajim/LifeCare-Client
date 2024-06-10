@@ -31,7 +31,7 @@ const ManageCamp = () => {
         }
     }
 
-    console.log(camps);
+    // console.log(camps);
     return (
         <div>
             <SectionTitle subHeading="manage camps " heading="manage camps" />

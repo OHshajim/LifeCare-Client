@@ -10,7 +10,7 @@ const useOrganizer = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/organizer/${user?.email}`)
-            console.log(res.data?.organizer, user.email);
+            // console.log(res.data?.organizer, user.email);
             return res.data?.organizer;
         }
     })
