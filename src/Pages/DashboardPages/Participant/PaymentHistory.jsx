@@ -59,7 +59,7 @@ const PaymentHistory = () => {
             <Helmet>
                 <title>LifeCare || Payment History</title>
             </Helmet>
-            <SectionTitle subHeading="manage camps " heading="Payment History" />
+            <SectionTitle subHeading="See your payments" heading="Payment History" />
             <div>
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">

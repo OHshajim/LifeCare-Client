@@ -81,7 +81,7 @@ const UserManagement = () => {
             <Helmet>
                 <title>LifeCare || User Management</title>
             </Helmet>
-            <SectionTitle subHeading="manage users " heading="manage users" />
+            <SectionTitle subHeading="All users " heading="manage users" />
             <div>
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">

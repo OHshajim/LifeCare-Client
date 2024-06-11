@@ -76,7 +76,7 @@ const ManageCamp = () => {
             <Helmet>
                 <title>LifeCare || Manage Camps</title>
             </Helmet>
-            <SectionTitle subHeading="manage camps " heading="manage camps" />
+            <SectionTitle subHeading="All camps " heading="manage camps" />
             <div>
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">

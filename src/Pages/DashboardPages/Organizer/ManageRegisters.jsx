@@ -71,7 +71,7 @@ const ManageRegisters = () => {
                 <title>LifeCare || Manage Registers</title>
             </Helmet>
             <div>
-                <SectionTitle subHeading="manage registers camps " heading="manage registers camps" />
+                <SectionTitle subHeading="All registers camps " heading="manage registers camps" />
                 <div>
                     <section className="container px-4 mx-auto">
                         <div className="flex items-center gap-x-3">

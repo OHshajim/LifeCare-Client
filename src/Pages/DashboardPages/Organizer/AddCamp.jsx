@@ -55,7 +55,7 @@ const AddCamp = () => {
             <Helmet>
                 <title>LifeCare || Add Camp</title>
             </Helmet>
-            <SectionTitle subHeading="Adding " heading="Add a new Camp" />
+            <SectionTitle subHeading="Adding Camp" heading="Add a new Camp" />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-4" >
 
