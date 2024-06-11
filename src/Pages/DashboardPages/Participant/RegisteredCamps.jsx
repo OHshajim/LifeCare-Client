@@ -12,18 +12,19 @@ import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
+import Loader from "../../../Components/Loader/Loader";
 
 const RegisteredCamps = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('')
     const { user } = useAuth();
     const [currentPage, setPage] = useState(0)
-    const { count } = useCount(`/userPaidCamps/${user?.email}`)
+    const { count } = useCount(`/userRegisteredCamps/${user?.email}`)
     const itemPerPage = 10;
     const numberOfPage = Math.ceil(count.length / itemPerPage);
     const pages = [...Array(numberOfPage).keys()];
-
-    const { data: camps = [], refetch } = useQuery({
+    console.log(pages, numberOfPage, count);
+    const { data: camps = [], refetch, isPending } = useQuery({
         queryKey: ['camps', user?.email, search, currentPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/registeredCamps/${user?.email}?search=${search}&page=${currentPage}`)
@@ -44,9 +45,6 @@ const RegisteredCamps = () => {
         }
     }
     console.log(camps);
-
-
-
 
     const {
         register,
@@ -109,7 +107,7 @@ const RegisteredCamps = () => {
         }
     }
     return (
-        <div>
+        <div className="mb-20">
             <SectionTitle subHeading="manage camps " heading="manage camps" />
             <div>
                 <section className="container px-4 mx-auto">
@@ -159,6 +157,14 @@ const RegisteredCamps = () => {
                                                 </th>
                                             </tr>
                                         </thead>
+                                        {/* loading */}
+                                        {
+                                            isPending && <div className="flex justify-center ">
+                                                {
+                                                    isPending && <Loader/>
+                                                }
+                                            </div>
+                                        }
                                         <tbody className="bg-white divide-y divide-gray-200  ">
                                             {
                                                 camps.map(camp => <tr key={camp._id}>

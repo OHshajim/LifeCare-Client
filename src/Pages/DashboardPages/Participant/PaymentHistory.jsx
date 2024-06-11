@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
+import Loader from "../../../Components/Loader/Loader";
 
 const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ const PaymentHistory = () => {
     const pages = [...Array(numberOfPage).keys()];
     // console.log(count, numberOfPage, pages);
 
-    const { data: camps = [], refetch } = useQuery({
+    const { data: camps = [], refetch ,isPending} = useQuery({
         queryKey: ['camps', user?.email, search ,currentPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/paidCamps/${user?.email}?search=${search}&page=${currentPage}`);
@@ -94,6 +95,14 @@ const PaymentHistory = () => {
 
                                             </tr>
                                         </thead>
+                                         {/* loading */}
+                                         {
+                                            isPending && <div className="flex justify-center ">
+                                                {
+                                                    isPending && <Loader/>
+                                                }
+                                            </div>
+                                        }
                                         <tbody className="bg-white divide-y divide-gray-200  ">
                                             {
                                                 camps.map(camp => <tr key={camp._id}>

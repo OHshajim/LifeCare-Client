@@ -5,18 +5,29 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import useCount from "../../../Hooks/useCount";
+import Loader from "../../../Components/Loader/Loader";
 
 
 const ManageRegisters = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('')
-    const { data: registers = [], refetch } = useQuery({
-        queryKey: ['registers', search],
+
+    const [currentPage, setPage] = useState(0)
+    const { count } = useCount('/AllUsersRegistrations')
+    const itemPerPage = 10;
+    const numberOfPage = Math.ceil(count.length / itemPerPage);
+    const pages = [...Array(numberOfPage).keys()];
+    
+    const { data: registers = [], refetch ,isPending} = useQuery({
+        queryKey: ['registers', search,currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/registers?search=${search}`)
+            const res = await axiosSecure.get(`/registers?search=${search}&page=${currentPage}`)
             return res.data;
-        }
-    })
+            }
+            })
+        console.log(registers);
     const handleDelete = async (id) => {
         const res = await axiosSecure.delete(`/registeredCamp/${id}`)
         console.log(res);
@@ -43,6 +54,16 @@ const ManageRegisters = () => {
         console.log(data);
         return await refetch();
     }
+    const handleNext = () => {
+        if (currentPage < pages.length - 1) {
+            setPage(currentPage + 1)
+        }
+    }
+    const handlePrev = () => {
+        if (currentPage > 0) {
+            setPage(currentPage - 1)
+        }
+    }
     return (
         <div className="mb-10">
             <div>
@@ -51,7 +72,7 @@ const ManageRegisters = () => {
                     <section className="container px-4 mx-auto">
                         <div className="flex items-center gap-x-3">
                             <h2 className="text-lg font-medium text-gray-800 Total camps"> Total Camps</h2>
-                            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  ">{registers.length} Camps</span>
+                            <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  ">{count.length} Camps</span>
                         </div>
                         <div className="my-5 w-full max-w-2xl mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
                             <form className="flex " onSubmit={handleSubmit(handleSearch)}>
@@ -93,6 +114,14 @@ const ManageRegisters = () => {
 
                                                 </tr>
                                             </thead>
+                                             {/* loading */}
+                                        {
+                                            isPending && <div className="flex justify-center ">
+                                                {
+                                                    isPending && <Loader/>
+                                                }
+                                            </div>
+                                        }
                                             <tbody className="bg-white divide-y divide-gray-200  ">
                                                 {
                                                     registers.map(register => <tr key={register._id}>
@@ -149,6 +178,31 @@ const ManageRegisters = () => {
                     </section>
                 </div>
 
+                {/* pagination */}
+                <div className="flex items-center justify-between mt-6">
+                    <Button onClick={handlePrev}
+                        className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2   hover:bg-blue-100/60 hover:text-blue-500">
+                        <FaArrowLeftLong />
+
+                        <span>
+                            previous
+                        </span>
+                    </Button>
+
+                    <div className="items-center hidden lg:flex gap-x-3">
+                        {
+                            pages.map(page =>
+                                <Button onClick={() => setPage(page)} key={page}
+                                    className={`px-2 py-1 text-sm  rounded-md   ${currentPage == page ? "text-blue-500 bg-blue-100/60" : "text-gray-500 bg-gray-100"}`}>{page + 1}</Button>)
+                        }
+
+                    </div>
+
+                    <Button onClick={handleNext} className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-blue-100/60 hover:text-blue-500">
+                        Next
+                        <FaArrowRightLong />
+                    </Button>
+                </div>
             </div>
         </div>
     );

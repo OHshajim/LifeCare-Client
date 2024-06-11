@@ -1,14 +1,14 @@
-import { Progress } from "@material-tailwind/react";
 import useAuth from "../Hooks/useAuth";
 import PropTypes from 'prop-types';
 import { Navigate, useLocation } from "react-router-dom";
+import Loader from "../Components/Loader/Loader";
 
 const PrivetRoute = ({ children }) => {
     const { user, loading } = useAuth()
     const location = useLocation()
 
     if (loading) {
-        return <Progress value={50} variant="gradient" />
+        return <div className="flex justify-center items-center h-screen"><Loader/></div>
     }
 
     if (user) {

@@ -7,12 +7,13 @@ import SectionTitle from "./SectionTitle";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Loader from "../Components/Loader/Loader";
 
 const Profile = () => {
     const { user: currentUser, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: user = {}, refetch } = useQuery({
+    const { data: user = {}, refetch ,isPending} = useQuery({
         queryKey: ['user', currentUser?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -51,15 +52,23 @@ const Profile = () => {
     }
     return (
         <section >
+            {/* loading */}
             <div className="max-w-6xl my-20  mx-auto">
                 <SectionTitle heading="Profile" subHeading="See your self" />
+            {
+                isPending && <div className="flex justify-center ">
+                    {
+                        isPending && <Loader />
+                    }
+                </div>
+            }
                 <main className="relative z-20 w-full mt-8 flex items-center flex-col ">
                     <img className=" rounded-full  shadow-md mb-10 h-[10rem] w-[10rem] md:h-[20rem] md:w-[20rem]  " src={user?.photoURL} alt={user?.name} />
                     <div className="w-full p-5  sm:p-10 bg-[#2e8fbc]  rounded-2xl  ">
 
                         <div className=" flex sm:flex-row flex-col justify-between w-full  space-y-2">
                             <div>
-                                <p className="text-blue-100 uppercase">{user?.role ||'Participant'}</p>
+                                <p className="text-blue-100 uppercase">{user?.role || 'Participant'}</p>
                                 <div className="flex mx-auto mb-6">
                                     <span className="inline-block w-40 h-1 bg-white rounded-full"></span>
                                     <span className="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
@@ -68,7 +77,7 @@ const Profile = () => {
                                 <p className="text-xl font-medium tracking-tight text-white">{user?.name}</p>
                                 <p className="text-white mt-3">Contact Details:</p>
                                 <p className="text-blue-100 ">{user?.email}</p>
-                                <p className="text-blue-100 ">{user?.number ||"N/A"}</p>
+                                <p className="text-blue-100 ">{user?.number || "N/A"}</p>
 
                             </div>
 

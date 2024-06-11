@@ -31,27 +31,37 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
                                 isOrganizer ?
 
                                     <>
-                                        <NavLink to={'/dashboard/profile'} >
+                                        <NavLink to={'/dashboard/profile'} className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        }>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Profile
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/addCamp'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/addCamp'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 add Camp
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/manageCamp'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/manageCamp'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Manage Camp
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/manageRegisters'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/manageRegisters'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Manage Registered Camps
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/userManagement'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/userManagement'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Participant Management
                                             </ListItem>
@@ -59,22 +69,30 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
                                     </>
                                     :
                                     <>
-                                        <NavLink to={'/dashboard/analytics'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/analytics'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Analytics
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/profile'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/profile'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Profile
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/registeredCamps'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/registeredCamps'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Registered Camps
                                             </ListItem>
                                         </NavLink>
-                                        <NavLink to={'/dashboard/paymentHistory'}>
+                                        <NavLink className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                                        } to={'/dashboard/paymentHistory'}>
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Payment History
                                             </ListItem>
@@ -83,12 +101,16 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
 
                             }
                             <hr className="my-2 border-blue-gray-50" />
-                            <NavLink to={'/'}>
+                            <NavLink className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                            } to={'/'}>
                                 <ListItem onClick={() => closeDrawer()}>
                                     home
                                 </ListItem>
                             </NavLink>
-                            <NavLink to={'/'}>
+                            <NavLink className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                            } to={'/'}>
                                 <ListItem onClick={() => closeDrawer()}>
                                     Available Camps
                                 </ListItem>

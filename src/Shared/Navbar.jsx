@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { MdOutlinePlaylistRemove } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 const Nav = () => {
@@ -40,16 +40,20 @@ const Nav = () => {
         })
     }
     const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
+        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-sm">
             <li className="">
-                <Link to='/' className="flex items-center ">
+                <NavLink to='/' className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                }>
                     Home
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link to='/availableCamps' className="flex items-center ">
+                <NavLink to='/availableCamps' className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
+                }>
                     Available Camps
-                </Link>
+                </NavLink>
             </li>
         </ul>
     );
@@ -130,7 +134,7 @@ const Nav = () => {
                                     </>
                                         :
                                         <>
-                                            <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
+                                            <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-sm">
                                                 <li>
                                                     <Link to='/login' className="flex items-center ">
                                                         Join Us

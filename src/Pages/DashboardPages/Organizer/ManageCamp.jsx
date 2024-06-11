@@ -9,15 +9,25 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import useCount from "../../../Hooks/useCount";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import Loader from "../../../Components/Loader/Loader";
 
 const ManageCamp = () => {
     const [search, setSearch] = useState('')
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
-    const { data: camps = [], refetch } = useQuery({
-        queryKey: ['camps',search],
+    const [currentPage, setPage] = useState(0)
+    const { count } = useCount('/AllCampsOfPage')
+    console.log(count);
+    const itemPerPage = 10;
+    const numberOfPage = Math.ceil(count.length / itemPerPage);
+    const pages = [...Array(numberOfPage).keys()];
+
+    const { data: camps = [], refetch ,isPending} = useQuery({
+        queryKey: ['camps', search, currentPage],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/allCamps?search=${search}`)
+            const res = await axiosPublic.get(`/allCamps?search=${search}&page=${currentPage}`)
             return res.data;
         }
     })
@@ -47,6 +57,17 @@ const ManageCamp = () => {
         }
         console.log(data);
         return await refetch();
+    }
+
+    const handleNext = () => {
+        if (currentPage < pages.length - 1) {
+            setPage(currentPage + 1)
+        }
+    }
+    const handlePrev = () => {
+        if (currentPage > 0) {
+            setPage(currentPage - 1)
+        }
     }
     // console.log(camps);
     return (
@@ -94,6 +115,14 @@ const ManageCamp = () => {
                                                 </th>
                                             </tr>
                                         </thead>
+                                         {/* loading */}
+                                         {
+                                            isPending && <div className="flex justify-center ">
+                                                {
+                                                    isPending && <Loader/>
+                                                }
+                                            </div>
+                                        }
                                         <tbody className="bg-white divide-y divide-gray-200  ">
                                             {
                                                 camps.map(camp => <tr key={camp._id}>
@@ -133,32 +162,30 @@ const ManageCamp = () => {
                         </div>
                     </div>
 
+                    {/* pagination */}
                     <div className="flex items-center justify-between mt-6">
-                        <a href="#" className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    -800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
-                                <path d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                            </svg>
+                        <Button onClick={handlePrev}
+                            className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2   hover:bg-blue-100/60 hover:text-blue-500">
+                            <FaArrowLeftLong />
 
                             <span>
                                 previous
                             </span>
-                        </a>
+                        </Button>
 
                         <div className="items-center hidden lg:flex gap-x-3">
-                            <a href="#" className="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
-                            <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md -800  hover:bg-gray-100">2</a>
-                            <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md -800  hover:bg-gray-100">3</a>
+                            {
+                                pages.map(page =>
+                                    <Button onClick={() => setPage(page)} key={page}
+                                        className={`px-2 py-1 text-sm  rounded-md   ${currentPage == page ? "text-blue-500 bg-blue-100/60" : "text-gray-500 bg-gray-100"}`}>{page + 1}</Button>)
+                            }
+
                         </div>
 
-                        <a href="#" className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    -800">
-                            <span>
-                                Next
-                            </span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
-                                <path d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </a>
+                        <Button onClick={handleNext} className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-blue-100/60 hover:text-blue-500">
+                            Next
+                            <FaArrowRightLong />
+                        </Button>
                     </div>
                 </section>
             </div>
