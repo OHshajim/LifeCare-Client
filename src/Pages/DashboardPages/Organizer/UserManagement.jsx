@@ -9,6 +9,7 @@ import { useState } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
 import Loader from "../../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const UserManagement = () => {
     const [search, setSearch] = useState('')
@@ -77,6 +78,9 @@ const UserManagement = () => {
     }
     return (
         <div className="min-h-screen">
+            <Helmet>
+                <title>LifeCare || User Management</title>
+            </Helmet>
             <SectionTitle subHeading="manage users " heading="manage users" />
             <div>
                 <section className="container px-4 mx-auto">

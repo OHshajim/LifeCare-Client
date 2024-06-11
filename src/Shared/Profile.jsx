@@ -8,12 +8,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Loader from "../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
     const { user: currentUser, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: user = {}, refetch ,isPending} = useQuery({
+    const { data: user = {}, refetch, isPending } = useQuery({
         queryKey: ['user', currentUser?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -53,15 +54,18 @@ const Profile = () => {
     return (
         <section >
             {/* loading */}
+            <Helmet>
+                <title>LifeCare || Profile</title>
+            </Helmet>
             <div className="max-w-6xl my-20  mx-auto">
                 <SectionTitle heading="Profile" subHeading="See your self" />
-            {
-                isPending && <div className="flex justify-center ">
-                    {
-                        isPending && <Loader />
-                    }
-                </div>
-            }
+                {
+                    isPending && <div className="flex justify-center ">
+                        {
+                            isPending && <Loader />
+                        }
+                    </div>
+                }
                 <main className="relative z-20 w-full mt-8 flex items-center flex-col ">
                     <img className=" rounded-full  shadow-md mb-10 h-[10rem] w-[10rem] md:h-[20rem] md:w-[20rem]  " src={user?.photoURL} alt={user?.name} />
                     <div className="w-full p-5  sm:p-10 bg-[#2e8fbc]  rounded-2xl  ">

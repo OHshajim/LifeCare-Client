@@ -3,6 +3,7 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddCamp = () => {
     const axiosPublic = useAxiosPublic()
@@ -51,6 +52,9 @@ const AddCamp = () => {
     }
     return (
         <div className="my-20">
+            <Helmet>
+                <title>LifeCare || Add Camp</title>
+            </Helmet>
             <SectionTitle subHeading="Adding " heading="Add a new Camp" />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-4" >

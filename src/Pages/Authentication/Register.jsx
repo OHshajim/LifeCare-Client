@@ -5,6 +5,7 @@ import useFrom from "../../Hooks/useFrom";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Social from "./Social";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { CreateUser, updateUser } = useAuth()
@@ -50,10 +51,13 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>LifeCare || Register</title>
+            </Helmet>
             <div className="flex justify-center items-center min-h-screen">
-               
+
                 <div className="flex my-20 shadow-2xl w-full max-w-lg mx-auto overflow-hidden rounded-lg lg:max-w-screen-xl text-black bg-white"
-                
+
                 >
                     <div className="w-full bg-transparent px-6 py-8 md:px-8 lg:w-1/2">
 
@@ -136,11 +140,11 @@ const Register = () => {
                         </div>
                         <div className="flex flex-col  items-center mt-3">
                             <p className="text-sm font-medium">Or Register With </p>
-                            <Social/>
+                            <Social />
                         </div>
                     </div>
                     <div className="hidden bg-cover lg:block lg:w-1/2">
-                        <img src={'https://i.ibb.co/qD68R9t/6310507.jpg'} alt="" className="w-full"/>
+                        <img src={'https://i.ibb.co/qD68R9t/6310507.jpg'} alt="" className="w-full" />
                     </div>
                 </div>
             </div>

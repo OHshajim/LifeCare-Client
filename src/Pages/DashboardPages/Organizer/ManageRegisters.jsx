@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
 import Loader from "../../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageRegisters = () => {
@@ -66,6 +67,9 @@ const ManageRegisters = () => {
     }
     return (
         <div className="mb-10">
+            <Helmet>
+                <title>LifeCare || Manage Registers</title>
+            </Helmet>
             <div>
                 <SectionTitle subHeading="manage registers camps " heading="manage registers camps" />
                 <div>

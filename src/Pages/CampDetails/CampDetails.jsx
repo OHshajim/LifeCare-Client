@@ -13,6 +13,8 @@ import Select from 'react-select'
 import Swal from "sweetalert2";
 import Loader from "../../Components/Loader/Loader";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import SectionTitle from "../../Shared/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const CampDetails = () => {
     const axiosSecure = useAxiosSecure()
@@ -82,6 +84,10 @@ const CampDetails = () => {
     const handleOpen = () => setOpen(!open);
     return (
         <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10 py-20">
+            <Helmet>
+                <title>LifeCare || Camp Details</title>
+            </Helmet>
+            <SectionTitle heading="Camp Details" subHeading="Join Us"/>
             {/* loader */}
             <div className="flex justify-center ">
                 {

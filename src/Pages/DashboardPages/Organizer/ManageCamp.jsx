@@ -12,6 +12,7 @@ import { useState } from "react";
 import useCount from "../../../Hooks/useCount";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import Loader from "../../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const ManageCamp = () => {
     const [search, setSearch] = useState('')
@@ -72,6 +73,9 @@ const ManageCamp = () => {
     // console.log(camps);
     return (
         <div className="my-20 ">
+            <Helmet>
+                <title>LifeCare || Manage Camps</title>
+            </Helmet>
             <SectionTitle subHeading="manage camps " heading="manage camps" />
             <div>
                 <section className="container px-4 mx-auto">

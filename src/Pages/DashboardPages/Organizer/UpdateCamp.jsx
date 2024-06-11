@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../Shared/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const UpdateCamp = () => {
     const { id } = useParams()
@@ -89,6 +90,9 @@ const UpdateCamp = () => {
     }
     return (
         <div className="my-20">
+            <Helmet>
+                <title>LifeCare || Update Camp</title>
+            </Helmet>
             <SectionTitle heading="Update Camp" subHeading="updating"/>
             <div className="">
                 <form onSubmit={handleSubmit(onSubmit)}>

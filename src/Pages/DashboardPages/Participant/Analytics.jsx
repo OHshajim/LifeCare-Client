@@ -3,6 +3,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Cell, BarChart, CartesianGrid, YAxis, Bar, XAxis } from 'recharts';
+import { Helmet } from "react-helmet-async";
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 const Analytics = () => {
@@ -17,7 +18,7 @@ const Analytics = () => {
             return res.data;
         }
     })
-    
+
     const paidCamp = camps.filter(camp => camp.paymentStatus === 'paid')
     const totalFees = paidCamp.reduce((total, item) => total + parseInt(item.campFees), 0)
 
@@ -45,6 +46,9 @@ const Analytics = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <title>LifeCare || Analytics</title>
+            </Helmet>
             <SectionTitle heading="Analytics" subHeading="See Your Activities" />
             <h2 className="text-xl font-bold text-light-blue-300">Hello ,Welcome Back {user?.displayName}</h2>
             <div className="flex w-full">

@@ -1,10 +1,14 @@
 import { Button } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (
         <section className="bg-white  ">
+            <Helmet>
+                <title>No Page</title>
+            </Helmet>
             <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
                 <div className="wf-ull lg:w-1/2">
                     <p className="text-sm font-medium text-blue-500 dark:text-blue-400">404 error</p>

@@ -13,6 +13,7 @@ import '@smastrom/react-rating/style.css'
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
 import Loader from "../../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const RegisteredCamps = () => {
     const axiosSecure = useAxiosSecure();
@@ -108,6 +109,9 @@ const RegisteredCamps = () => {
     }
     return (
         <div className="mb-20">
+            <Helmet>
+                <title>LifeCare || Registered Camps</title>
+            </Helmet>
             <SectionTitle subHeading="manage camps " heading="manage camps" />
             <div>
                 <section className="container px-4 mx-auto">
@@ -161,7 +165,7 @@ const RegisteredCamps = () => {
                                         {
                                             isPending && <div className="flex justify-center ">
                                                 {
-                                                    isPending && <Loader/>
+                                                    isPending && <Loader />
                                                 }
                                             </div>
                                         }

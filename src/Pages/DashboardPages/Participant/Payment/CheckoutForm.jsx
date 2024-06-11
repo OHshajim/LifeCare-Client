@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import useAuth from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const CheckoutForm = ({ camp }) => {
     const axiosSecure = useAxiosSecure();
@@ -87,7 +88,7 @@ const CheckoutForm = ({ camp }) => {
                         text: 'Payment Complete ',
                         icon: 'success'
                     })
-                    navigate('/dashboard/registeredCamps')
+                    navigate('/dashboard/paymentHistory')
                 }
             }
         }
@@ -95,6 +96,9 @@ const CheckoutForm = ({ camp }) => {
     }
     return (
         <div>
+            <Helmet>
+                <title>LifeCare || Payment</title>
+            </Helmet>
             <form onSubmit={handleSubmit}>
                 <CardElement className='p-3 text-xl' options={{
                     style: {

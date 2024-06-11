@@ -7,6 +7,7 @@ import { Button, Option, Select, } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Loader from "../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 // import Select from 'react-select'
 // import Select from 'react-select'
 const AvailableCamps = () => {
@@ -43,6 +44,9 @@ const AvailableCamps = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>LifeCare || Available Camps</title>
+            </Helmet>
             <CampBanner />
             <div className="max-w-[1650px] mx-auto px-2 sm:px-4 lg:px-10">
                 <SectionTitle subHeading={'join with us'} heading={"Available Camps"} />
@@ -62,12 +66,12 @@ const AvailableCamps = () => {
                         <Button
                             onClick={() => setThree(!isThree)}>{isThree ? 'Make Two' : 'Make Three'}</Button>
                     </div>
-                           
+
 
                     {/* sort */}
                     <div className="flex justify-center mb-7 ">
                         <div className=" w-40">
-                            <Select  onChange={handleSort} className=" " label="Sort by" >
+                            <Select onChange={handleSort} className=" " label="Sort by" >
                                 <Option value="">Default</Option>
                                 <Option value="campName">Camp Name</Option>
                                 <Option value="campFees">Camp Fees</Option>

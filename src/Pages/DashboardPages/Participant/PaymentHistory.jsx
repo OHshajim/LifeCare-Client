@@ -8,6 +8,7 @@ import { useState } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCount from "../../../Hooks/useCount";
 import Loader from "../../../Components/Loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
@@ -20,8 +21,8 @@ const PaymentHistory = () => {
     const pages = [...Array(numberOfPage).keys()];
     // console.log(count, numberOfPage, pages);
 
-    const { data: camps = [], refetch ,isPending} = useQuery({
-        queryKey: ['camps', user?.email, search ,currentPage],
+    const { data: camps = [], refetch, isPending } = useQuery({
+        queryKey: ['camps', user?.email, search, currentPage],
         queryFn: async () => {
             const res = await axiosSecure.get(`/paidCamps/${user?.email}?search=${search}&page=${currentPage}`);
             console.log(res);
@@ -44,7 +45,7 @@ const PaymentHistory = () => {
         return await refetch();
     }
     const handleNext = () => {
-        if (currentPage < pages.length-1) {
+        if (currentPage < pages.length - 1) {
             setPage(currentPage + 1)
         }
     }
@@ -55,6 +56,9 @@ const PaymentHistory = () => {
     }
     return (
         <div className="mb-20">
+            <Helmet>
+                <title>LifeCare || Payment History</title>
+            </Helmet>
             <SectionTitle subHeading="manage camps " heading="Payment History" />
             <div>
                 <section className="container px-4 mx-auto">
@@ -95,11 +99,11 @@ const PaymentHistory = () => {
 
                                             </tr>
                                         </thead>
-                                         {/* loading */}
-                                         {
+                                        {/* loading */}
+                                        {
                                             isPending && <div className="flex justify-center ">
                                                 {
-                                                    isPending && <Loader/>
+                                                    isPending && <Loader />
                                                 }
                                             </div>
                                         }

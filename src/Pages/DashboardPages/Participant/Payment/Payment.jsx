@@ -5,6 +5,7 @@ import SectionTitle from "../../../../Shared/SectionTitle";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 // publishable key
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
@@ -22,7 +23,10 @@ const Payment = () => {
     console.log(camp);
     return (
         <div>
-            <SectionTitle heading="Payment" subHeading="fast pay" />
+            <Helmet>
+                <title>LifeCare || Payment</title>
+            </Helmet>
+            <SectionTitle heading="Payment" subHeading="Pay With Stipe" />
             <div>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm camp={camp}/>
