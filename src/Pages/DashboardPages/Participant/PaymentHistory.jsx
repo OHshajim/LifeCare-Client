@@ -5,15 +5,24 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import { Button } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import useCount from "../../../Hooks/useCount";
 
 const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('')
+    const [currentPage, setPage] = useState(0)
     const { user } = useAuth();
+    const { count } = useCount(`/userPaidCamps/${user?.email}`)
+    const itemPerPage = 10;
+    const numberOfPage = Math.ceil(count.length / itemPerPage);
+    const pages = [...Array(numberOfPage).keys()];
+    // console.log(count, numberOfPage, pages);
+
     const { data: camps = [], refetch } = useQuery({
-        queryKey: ['camps', user?.email, search],
+        queryKey: ['camps', user?.email, search ,currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/paidCamps/${user?.email}?search=${search}`);
+            const res = await axiosSecure.get(`/paidCamps/${user?.email}?search=${search}&page=${currentPage}`);
             console.log(res);
             return res.data;
         }
@@ -33,8 +42,18 @@ const PaymentHistory = () => {
         console.log(data);
         return await refetch();
     }
+    const handleNext = () => {
+        if (currentPage < pages.length-1) {
+            setPage(currentPage + 1)
+        }
+    }
+    const handlePrev = () => {
+        if (currentPage > 0) {
+            setPage(currentPage - 1)
+        }
+    }
     return (
-        <div >
+        <div className="mb-20">
             <SectionTitle subHeading="manage camps " heading="Payment History" />
             <div>
                 <section className="container px-4 mx-auto">
@@ -100,32 +119,31 @@ const PaymentHistory = () => {
                         </div>
                     </div>
 
+
+                    {/* pagination */}
                     <div className="flex items-center justify-between mt-6">
-                        <a href="#" className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    -800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
-                                <path d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                            </svg>
+                        <Button onClick={handlePrev}
+                            className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2   hover:bg-blue-100/60 hover:text-blue-500">
+                            <FaArrowLeftLong />
 
                             <span>
                                 previous
                             </span>
-                        </a>
+                        </Button>
 
                         <div className="items-center hidden lg:flex gap-x-3">
-                            <a href="#" className="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
-                            <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md -800  hover:bg-gray-100">2</a>
-                            <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md -800  hover:bg-gray-100">3</a>
+                            {
+                                pages.map(page =>
+                                    <Button onClick={() => setPage(page)} key={page}
+                                        className={`px-2 py-1 text-sm  rounded-md   ${currentPage == page ? "text-blue-500 bg-blue-100/60" : "text-gray-500 bg-gray-100"}`}>{page + 1}</Button>)
+                            }
+
                         </div>
 
-                        <a href="#" className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    -800">
-                            <span>
-                                Next
-                            </span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
-                                <path d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </a>
+                        <Button onClick={handleNext} className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-blue-100/60 hover:text-blue-500">
+                            Next
+                            <FaArrowRightLong />
+                        </Button>
                     </div>
                 </section>
             </div>
