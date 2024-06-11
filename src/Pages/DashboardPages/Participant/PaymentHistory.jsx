@@ -11,8 +11,8 @@ import useCount from "../../../Hooks/useCount";
 const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('')
-    const [currentPage, setPage] = useState(0)
     const { user } = useAuth();
+    const [currentPage, setPage] = useState(0)
     const { count } = useCount(`/userPaidCamps/${user?.email}`)
     const itemPerPage = 10;
     const numberOfPage = Math.ceil(count.length / itemPerPage);
@@ -59,7 +59,7 @@ const PaymentHistory = () => {
                 <section className="container px-4 mx-auto">
                     <div className="flex items-center gap-x-3">
                         <h2 className="text-lg font-medium text-gray-800 Total camps"> Total Camps</h2>
-                        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  ">{camps.length} Camps</span>
+                        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  ">{count.length} Camps</span>
                     </div>
                     <div className="my-5 w-full max-w-2xl mx-auto  bg-transparent border rounded-full focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300  focus-within:ring-opacity-40 mb-7">
                         <form className="flex " onSubmit={handleSubmit(handleSearch)}>
