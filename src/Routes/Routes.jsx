@@ -16,9 +16,9 @@ import PaymentHistory from "../Pages/DashboardPages/Participant/PaymentHistory";
 import UserManagement from "../Pages/DashboardPages/Organizer/UserManagement";
 import ManageRegisters from "../Pages/DashboardPages/Organizer/ManageRegisters";
 import Analytics from "../Pages/DashboardPages/Participant/Analytics";
-import Profile from "./Profile";
 import NotFound from "../Pages/404/NotFound";
 import OrganizerRoute from "./OrganizerRoute";
+import Profile from "../Shared/Profile";
 
 const Routes = createBrowserRouter([
     {

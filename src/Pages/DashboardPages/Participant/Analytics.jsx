@@ -7,16 +7,17 @@ const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 const Analytics = () => {
     const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const { data: camps = [] } = useQuery({
         queryKey: ['camps', user?.email],
+        enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/registeredCamps/${user?.email}`)
-            // console.log(res);
+            const res = await axiosSecure.get(`/registerCampAnalysis/${user?.email}`)
+            console.log(res);
             return res.data;
         }
     })
-    console.log(camps);
+    
     const paidCamp = camps.filter(camp => camp.paymentStatus === 'paid')
     const totalFees = paidCamp.reduce((total, item) => total + parseInt(item.campFees), 0)
 
@@ -34,11 +35,14 @@ const Analytics = () => {
     };
 
     const TriangleBar = (props) => {
+        // eslint-disable-next-line react/prop-types
         const { fill, x, y, width, height } = props;
 
         return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
     };
     console.log(chartData);
+    console.log(camps);
+
     return (
         <div className="">
             <SectionTitle heading="Analytics" subHeading="See Your Activities" />
@@ -90,7 +94,7 @@ const Analytics = () => {
             </div>
 
             {/* chart */}
-            <p className="mt-10 mb-3 text-light-blue-300">Chart for more analysis :-</p>
+            <p className="mt-10 mb-3 text-light-blue-300 font-semibold">Chart Of Registered Camps -</p>
             <div className="overflow-auto">
                 <div style={{ width: "100%", height: "80vh" }}>
                     <BarChart

@@ -42,9 +42,7 @@ const Login = () => {
         <div className="flex justify-center items-center min-h-screen">
 
 
-            {/* <Helmet>
-                <title>Bistro Boss || Login</title>
-            </Helmet> */}
+            
 
             <div className="flex my-20 shadow-2xl w-full max-w-lg mx-auto overflow-hidden rounded-lg lg:max-w-screen-xl bg-white text-black"
             

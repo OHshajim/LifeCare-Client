@@ -31,7 +31,7 @@ const NavDrawer = ({ isDrawerOpen, closeDrawer }) => {
                                 isOrganizer ?
 
                                     <>
-                                        <NavLink to={'/dashboard/profile'}>
+                                        <NavLink to={'/dashboard/profile'} >
                                             <ListItem onClick={() => closeDrawer()}>
                                                 Profile
                                             </ListItem>

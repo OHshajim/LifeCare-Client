@@ -3,7 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Button, Card, CardBody, Dialog, Input, Typography } from "@material-tailwind/react";
 import { LuPenSquare } from "react-icons/lu";
-import SectionTitle from "../Shared/SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -54,7 +54,7 @@ const Profile = () => {
             <div className="max-w-6xl my-20  mx-auto">
                 <SectionTitle heading="Profile" subHeading="See your self" />
                 <main className="relative z-20 w-full mt-8 flex items-center flex-col ">
-                    <img className=" rounded-full  shadow-md mb-10 h-[10rem] w-[10rem] md:h-[20rem] md:w-[20rem] 2xl:h-[26rem] 2xl:w-[26rem] " src={user?.photoURL} alt={user?.name} />
+                    <img className=" rounded-full  shadow-md mb-10 h-[10rem] w-[10rem] md:h-[20rem] md:w-[20rem]  " src={user?.photoURL} alt={user?.name} />
                     <div className="w-full p-5  sm:p-10 bg-[#2e8fbc]  rounded-2xl  ">
 
                         <div className=" flex sm:flex-row flex-col justify-between w-full  space-y-2">
