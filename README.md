@@ -1,8 +1,12 @@
 LifeCare
 # Medical Camp Management System 
+
 ****** Organizer ******
+
 Organizers username: Viewer
+
 Organizers email: test@gmail.com
+
 password: test1212
 
 live site URL : 
