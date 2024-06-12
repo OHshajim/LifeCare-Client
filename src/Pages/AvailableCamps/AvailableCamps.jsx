@@ -8,8 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Loader from "../../Components/Loader/Loader";
 import { Helmet } from "react-helmet-async";
-// import Select from 'react-select'
-// import Select from 'react-select'
+
 const AvailableCamps = () => {
     const axiosPublic = useAxiosPublic()
     const [search, setSearch] = useState('')

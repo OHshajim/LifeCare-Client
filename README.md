@@ -7,9 +7,9 @@ Organizers username: Viewer
 
 Organizers email: test@gmail.com
 
-password: test1212
+Password: test1212
 
-live site URL : 
+Live site URL : https://lifecare-529a0.web.app/
 
 
 Bullet points featuring the website:
