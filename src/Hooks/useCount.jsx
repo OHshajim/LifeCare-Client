@@ -7,7 +7,7 @@ const useCount = (url) => {
         queryKey: ['count',url],
         queryFn: async () => {
             const res = await axiosSecure.get(url);
-            console.log(res);
+            // console.log(res);
             return res.data;
         }
     })

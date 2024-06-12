@@ -40,7 +40,7 @@ const Nav = () => {
         })
     }
     const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-sm">
+        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 text-base">
             <li className="">
                 <NavLink to='/' className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-[#81C9E9] font-bold flex items-center gap-2" : "flex items-center gap-2"
@@ -118,7 +118,7 @@ const Nav = () => {
                                             </MenuHandler>
                                             <MenuList className="space-y-4">
 
-                                                <p className="px-3 my-2">{user?.displayName}</p>
+                                                <p className="px-3 my-2 font-semibold text-[#81C9E9]">{user?.displayName}</p>
 
                                                 <Link to='/dashboard/profile' className="flex items-center ">
                                                     <MenuItem>
