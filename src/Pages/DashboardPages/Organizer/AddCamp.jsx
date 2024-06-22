@@ -94,7 +94,7 @@ const AddCamp = () => {
                     <div className='md:flex w-full gap-5 space-y-4 md:space-y-0'>
                         <div className='w-full md:w-1/2'>
                             <label className="font-semibold" >participant count</label>
-                            <input {...register("participantCount", { required: true })}
+                            <input {...register("participantCount", { required: true })} value={0}
                                 type="number" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" />
                             {errors.participantCount && <span className="text-red-600 font-semibold text-sm">participant count is required***</span>}
                         </div>
