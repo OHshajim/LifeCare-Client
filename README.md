@@ -1,10 +1,10 @@
 # LifeCare
 <h3>Medical Camp Management System </h3>
 
-****** Organizer ******
-Organizers username: Viewer
-Organizers email: test@gmail.com
-Password: test1212
+****** Organizer ****** </br>
+Organizers username: Viewer </br>
+Organizers email: test@gmail.com </br>
+Password: test1212 </br>
 
 Live site URL : https://lifecare-529a0.web.app/
 
