@@ -9,7 +9,7 @@ Password: test1212 </br>
 Live site URL : https://lifecare-529a0.web.app/
 
 
-Bullet points featuring the website: 
+Bullet points featuring the website: </br>
 ****** Best Features ******
 1. Users can paid by stipe .
 2. In this webSite, Organizers have differant opportunities from Users.like as User Management, Camp Management . etc.
