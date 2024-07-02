@@ -54,10 +54,4 @@ VITE_PHOTO_HOSTING_KEY= {Photo hosting Key} </br>
 VITE_PAYMENT_PK={Payment Method Key} </br>
 
 <h3>****** Technologies ******</h3>
-1. React.js
-2. Firebase
-3. Stripe
-4. Material Tailwind
-5. TanStack Query
-6. Axios
-7. JWT
+React.js || Firebase || Stripe || Material Tailwind || TanStack Query || Axios || JWT
