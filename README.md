@@ -9,18 +9,20 @@ Password: test1212 </br>
 Live site URL : https://lifecare-529a0.web.app/
 
 
-Bullet points featuring the website:
-1. In this website, Participants can see camp details and join camps .
-2. User can search and sort by camp fees, name or other options .
-3. Users can paid by stipe .
-4. User can delete his registered  camps before pay.
-5. User can also update his profile but without email.
-6. User Can Analyses his registered camps , paid fees , etc.
-7. In this webSite , Organizers have another opportunities .like as User Management, Camp Management . etc.  
-8. Organizer can update the role of user .
-9. Organizer Can delete user , Camps , Registered camps before payment .
-10. Organizer can add Camps .
-11. Every privet route are protected by JWT .
+Bullet points featuring the website: 
+****** Best Features ******
+1. Users can paid by stipe .
+2. In this webSite, Organizers have differant opportunities from Users.like as User Management, Camp Management . etc.
+3. Organizer can update the role of user .
+   
+****** Others ******
+1. User can search and sort by camp fees, name or other options .
+2. User Can Analyses his registered camps , paid fees , etc.
+3. User can delete his registered  camps before pay.
+4. User can also update his profile but without email.
+5. Organizer Can delete user , Camps , Registered camps before payment .
+6. Organizer can add Camps .
+7. Every privet route are protected by JWT .
 
 <h1>To run localy :</h1>
 # npm pakage </br>
