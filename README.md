@@ -26,7 +26,7 @@ Bullet points featuring the website:
 11. Every privet route are protected by JWT .
 
 <h1>To run localy :</h1>
-# npm pakage 
+# npm pakage </br>
 1. axios </br>
 2. react icons</br>
 3. material-tailwind</br>
@@ -42,7 +42,7 @@ Bullet points featuring the website:
 13. react-select</br>
 14. recharts</br>
 15. sweetalert2</br>
-16. swiper</br>
+16. swiper
 
 
 
@@ -56,7 +56,7 @@ VITE_appId= {firebase} </br>
 VITE_PHOTO_HOSTING_KEY= {Photo hosting Key} </br>
 VITE_PAYMENT_PK={Payment Method Key} </br>
 
-****** Technologies ******
+<h3>****** Technologies ******</h3>
 1. React.js
 2. Firebase
 3. Stripe
