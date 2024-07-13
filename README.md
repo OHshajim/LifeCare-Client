@@ -56,4 +56,7 @@ VITE_PHOTO_HOSTING_KEY= {Photo hosting Key} </br>
 VITE_PAYMENT_PK={Payment Method Key} </br>
 
 <h3>****** Technologies ******</h3>
-React.js || Firebase || Stripe || Material Tailwind || TanStack Query || Axios || JWT
+React.js || Firebase || Stripe || Material Tailwind || TanStack Query || Axios || JWT 
+<br/>
+
+Server Side Repository : https://github.com/OHshajim/LifeCare-Server
