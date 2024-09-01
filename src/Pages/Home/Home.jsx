@@ -12,7 +12,7 @@ const Home = () => {
   AOS.init();
 
   return (
-    <div>
+    <div className="select-none">
       <Helmet>
         <title>LifeCare || Home</title>
       </Helmet>
@@ -51,8 +51,16 @@ const Home = () => {
         <Success />
       </div>
       <SectionTitle subHeading={"Our team"} heading={"Meet with our team"} />
-      <div>
-        <Team/>
+      <div
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="600"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
+      >
+        <Team />
       </div>
 
       {/* Testimonials */}
@@ -75,7 +83,15 @@ const Home = () => {
 
       {/* Contact with us */}
       <SectionTitle subHeading={"Contact With Us"} heading={"Get in Touch"} />
-      <div>
+      <div
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="600"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="false"
+        data-aos-anchor-placement="top"
+      >
         <ContactUs />
       </div>
     </div>
