@@ -10,7 +10,7 @@ const CampCards = ({ camp }) => {
 
     const { _id, campFees, campName, date, description, healthcareProfessionalName, image, location, participantCount } = camp;
     return (
-        <div className="max-h-[600px]">
+        <div className="max-h-[600px] transform transition duration-500 hover:scale-105 hover:shadow-xl animate-fade-in">
                <Card className=" overflow-hidden h-full">
                 <CardHeader className="m-0 rounded-none">
                     <img
@@ -42,7 +42,7 @@ const CampCards = ({ camp }) => {
                         {healthcareProfessionalName}</p>
                 </CardBody>
                 <CardFooter className="pt-0">
-                    <Link to={`/camp/${_id}`}><Button>View Details</Button></Link>
+                    <Link to={`/camp/${_id}`}><Button className="bg-[#40b6e9] ">View Details</Button></Link>
                 </CardFooter>
             </Card>
         </div>

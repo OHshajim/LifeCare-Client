@@ -55,20 +55,21 @@ const AvailableCamps = () => {
                     <form className="flex " onSubmit={handleSubmit(handleSearch)}>
                         <input {...register('search')} type="text" placeholder="Search" className="flex-1 h-10 px-4 max-w-xl pr-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none  focus:outline-none focus:placeholder-transparent focus:ring-0" />
 
-                        <Button type="submit" className="h-10 px-3 sm:px-5 py-2 m-1 text-white transition-colors duration-300 transform bg-blue-500 rounded-full hover:bg-blue-400 focus:outline-none focus:bg-blue-400 c">
+                        <Button type="submit" className="h-10 px-3 sm:px-5 py-2 m-1 text-white transition-colors duration-300 transform bg-[#40b6e9] rounded-full hover:bg-blue-400 focus:outline-none focus:bg-blue-400 c">
                             Search
                         </Button>
                     </form>
                 </div>
                 <div className="xl:flex xl:justify-between ">
                     <div className="xl:block hidden">
-                        <Button
+                        <Button 
+                        className="bg-[#40b6e9] "
                             onClick={() => setThree(!isThree)}>{isThree ? 'Make Two' : 'Make Three'}</Button>
                     </div>
 
 
                     {/* sort */}
-                    <div className="flex justify-center mb-7 ">
+                    <div className="flex justify-center mb-7 select-none">
                         <div className=" w-40">
                             <Select onChange={handleSort} className=" " label="Sort by" >
                                 <Option value="">Default</Option>
@@ -94,7 +95,7 @@ const AvailableCamps = () => {
                 }
 
                 {/* cart */}
-                <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 ${isThree ? 'lg:grid-cols-3' : ''}`}>
+                <div className={`mb-10 grid grid-cols-1 md:grid-cols-2 gap-10 ${isThree ? 'lg:grid-cols-3' : ''}`}>
                     {
                         camps.map(camp => <CampCards key={camp._id} camp={camp} />)
                     }

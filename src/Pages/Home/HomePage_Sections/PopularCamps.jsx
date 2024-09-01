@@ -32,7 +32,7 @@ const PopularCamps = () => {
                 }
             </div>
             <div className="my-10 flex justify-center">
-                <Link to='/availableCamps'><Button>See All Camps</Button></Link>
+                <Link to='/availableCamps'><Button className="bg-[#50a9cf] hover:bg-[#3191ba]">See All Camps</Button></Link>
             </div>
         </div>
     );

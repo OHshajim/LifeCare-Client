@@ -122,7 +122,7 @@ const CampDetails = () => {
                         </div>
                     </div>
                     <div className="mt-5 flex justify-end ">
-                        <Button onClick={handleOpen}>Join Camp</Button>
+                        <Button className="bg-[#40b6e9]" onClick={handleOpen}>Join Camp</Button>
                     </div>
                 </div>
             </div>}
@@ -255,7 +255,7 @@ const CampDetails = () => {
                                 labelProps={{
                                     className: "before:content-none after:content-none",
                                 }}
-                                type="submit" variant="outlined" value='Registration' className=" !border-t-blue-gray-200 focus:!border-t-gray-900" />
+                                type="submit" variant="outlined" value='Registration' className=" !border-t-blue-gray-200 focus:!border-t-gray-900 hover:bg-[#6bbde1] hover:text-white" />
                         </form>
                     </CardBody>
                 </Card>

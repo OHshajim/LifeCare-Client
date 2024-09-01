@@ -123,7 +123,7 @@ const RegisteredCamps = () => {
                         <form className="flex " onSubmit={handleSearch}>
                             <input name="search" type="text" placeholder="Search" className="flex-1 h-10 px-4 max-w-xl pr-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none  focus:outline-none focus:placeholder-transparent focus:ring-0" />
 
-                            <Button type="submit" className="h-10 px-3 sm:px-5 py-2 m-1 text-white transition-colors duration-300 transform bg-blue-500 rounded-full hover:bg-blue-400 focus:outline-none focus:bg-blue-400 c">
+                            <Button type="submit" className="h-10 px-3 sm:px-5 py-2 m-1 text-white transition-colors duration-300 transform bg-[#40b6e9] rounded-full hover:bg-blue-400 focus:outline-none focus:bg-blue-400 c">
                                 Search
                             </Button>
                         </form>
