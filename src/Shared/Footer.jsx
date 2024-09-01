@@ -22,13 +22,13 @@ const Footer = () => {
           </div>
           <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
             <li>
-              <Link
-                to="/"
+              <a
+                href="#contact-us"
                 color="blue-gray"
                 className="font-normal transition-colors hover:text-[#81C9E9] delay-50 duration-300"
               >
                 About Us
-              </Link>
+              </a>
             </li>
             <li>
               <Link
