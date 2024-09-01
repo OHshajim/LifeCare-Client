@@ -7,6 +7,7 @@ import Testimonial from "./HomePage_Sections/Testimonial";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContactUs from "./HomePage_Sections/ContactUs";
+import Team from "./HomePage_Sections/Team";
 const Home = () => {
   AOS.init();
 
@@ -49,6 +50,12 @@ const Home = () => {
       >
         <Success />
       </div>
+      <SectionTitle subHeading={"Our team"} heading={"Meet with our team"} />
+      <div>
+        <Team/>
+      </div>
+
+      {/* Testimonials */}
       <SectionTitle
         subHeading={"Testimonials"}
         heading={"What Our Clients Say"}
@@ -65,6 +72,8 @@ const Home = () => {
       >
         <Testimonial />
       </div>
+
+      {/* Contact with us */}
       <SectionTitle subHeading={"Contact With Us"} heading={"Get in Touch"} />
       <div>
         <ContactUs />
